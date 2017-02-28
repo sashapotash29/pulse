@@ -1,0 +1,70 @@
+.topDiv{
+	background-color: #333533;
+	color: #EEF1E7;
+	width: 100%;
+
+}
+
+
+
+#mainTitle{
+	height:20%;
+	font-size: 5em;
+
+}
+
+
+.row{
+
+	height: 8em;
+
+}
+
+.button {
+    background-color: #333533; /* Green */
+    border: none;
+    color: #EEF1E7;
+    text-align: center;
+    display: inline-block;
+    font-size: 5em;
+    padding:0;
+    height:100%;
+    width:100%;
+
+}
+
+.innerNavDiv{
+	background-color: #333533;
+	text-align: center;
+	margin:auto;
+	height:100%;
+	padding:0;
+
+}
+
+.button:hover{
+	background-color:#EEF1E7;
+	color: #333533;
+
+
+
+}
+
+
+
+.col-sm-3{
+
+	border: dashed white;
+	height: 100%;
+	padding:0;
+
+}
+
+.middle{
+	border: dashed blue;
+	background-color: beige;
+	height: 60em;
+
+
+
+}
