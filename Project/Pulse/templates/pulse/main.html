@@ -1,80 +1,74 @@
 <!DOCTYPE html>
 
 <html>
+
+
 	<head>
-		
-		<title>KeyNote</title>
-		<link rel='icon' type="image/png" href="/static/images/favicon.ico" sizes="16x16"/>
-		<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"/>
-		<link rel="stylesheet"	href="../static/css/login.css"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.css" type="text/css"/>
+		<title> Pulse </title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-		<!-- <div class ="leftBuf buf">
-		</div> -->
-		<div class = "container">
-		
-			<div class="image">
-				<img src='/static/images/logo.png' width="300" height="150" alt="logo">
-			</div>
-			<div class="subCon subDiv" >	
-				<div class = "welcome">
-					<div class = "message">
-						<h3>Welcome to KeyNote!</h3>
-						<div class="text">
-							<p>If you would like to see what KeyNote is about, click the "Explore" button below. Otherwise, Sign Up and get started!</p>
-						</div>
-						<form action = "/sample" method = "GET">
-							<input class="exploreBut botton"  type = "submit" value = "Explore!">
-						</form>
-					</div>	
-				</div>
-				<div class="changeCon">	
-					<div id="changer1" class = "loginDiv box active">
-						
-							<form class="loginForm" action="/login" method="POST">
-								<input name="username" class ="user" type="text" placeholder="Username">
-								<input name="password" class ="pass" type="password" placeholder="Password">
-								<input class="goBut botton" type ="submit" value="Go!">
-							</form>
-							
-							<div class="errorMessage">{{errorMessage}}</div>
-							
-						
-							<input id="signUp" class="signUp botton" type="submit" value="Sign Up"/>
-						
-					</div>
-					<div id="changer2" class ="signUpDiv box">
-						
-							<form class="signupForm" action="/register" method="POST">
-								<input name="usernameSignUp" class ="user" type="text" placeholder="Username">
-								<input name="passwordSignUp" class ="pass" type="password" placeholder="Password">
-								<input name="firstname" class ="pass" type="text" placeholder="First Name">
-								<input name="lastname" class ="pass" type="text" placeholder="Last Name">
-								<input name="email" class ="pass" type="text" placeholder="Email">
-								<input class="goBut botton" type ="submit" value="Go!">
-							</form>
-							
-							<div class="errorMessage">{{errorMessage}}</div>
-							
-							<input id="loginUp" class="signUp botton" type="submit" value="Login"/>
-							
-					</div>
+		<div class="row top" id ="topRow">
+			<div class="col-sm-3 nav logo">
+				<div class="logoDiv">
+					<p id="mainTitle"> PULSE </p>
+					<p> kahjsdkhaskdh </p>
 				</div>
 			</div>
-			
-		</div>
-		<!-- <div class="rightBuf buf">
-		</div>
-		 -->
+	    	<div class="col-sm-3 nav">
+	    			<input type="submit" class="button" value= "Graph Type"></button>
+	    	</div>
+		    <div class="col-sm-3 nav">
+			    <div class="innerNavDiv">
+			      	<input type="submit" class="button" value= "Save"></button>
+			    </div>
+		    </div>
+		    <div class="col-sm-3 nav">
+		    	<div class="innerNavDiv">
+					<input type="submit" class="button" value= "Share"></button>
+		    	</div>	
+		    </div>
+  		</div>
 
-	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.js"></script>
+	  	<div class="row middle">
+  				<div class="col-sm-2 left">
+	  				<h2 id="sideHeader"> Stock Options </h1>
+	  				<ul class="ulButton">
+	  					<li class="liButton">
+	  						<input id="tsla" class="btn" value="Tesla, Inc. (TSLA)" type="submit"></button>
+  						</li>
+  						<li class="liButton">
+	  						<input id="ko" class="btn" value="The Coca-Cola Company (KO)" type="submit"></button>
+  						</li>
+	  					<li class="liButton">
+	  						<input id = "tst" class="btn" value="TEST (TST)" type="submit"></button>
+  						</li>
+	  				</ul>
+  				</div>
+		    	<div class="col-sm-7 center">
 
-	<script type="text/javascript" src="../static/js/login.js"></script>
+		    	</div>
+			    <div class="col-sm-3 right">
+			    	<h2 class="socialHeader sideHeader"> List of Social Data </h2>
+			    	<ul class = "list socialInfo">
+			    		<li class="socialDetail"> TEST </li>
+			    		<li class="socialDetail"> TEST </li>
+			    		<li class="socialDetail"> TEST </li>
+			    		<li class="socialDetail"> TEST </li>
+			    	</ul>
+			    </div>
+
+		</div>
+
+
+
 	
+
 	</body>
+
 
 </html>
