@@ -8,9 +8,16 @@
 
 }
 
+.bottom{
+
+	height: 5%;
+	background-color: black;
+
+}
+
 .logoDiv{
 	height:100%;
-
+	display: inline-block;
 
 }
 
@@ -23,11 +30,133 @@
 }
 
 
-.logo{
+#logo{
 	background-color: #F8DD97;
 
 
 }
+
+.dropdownList{
+
+	list-style: none;
+	padding:0;
+	margin:0;
+	background-color: black;
+	height:100%;
+
+
+}
+
+.ddg{
+	background-color: white;
+	height:100%;
+	margin:0;
+	padding:0;
+
+}
+
+.graphType{
+
+	height:100%;
+	background-color: black;
+
+}
+
+
+.graphNavItem{
+
+	height:100%;
+	width: 100%;
+ 	margin:0;
+	padding:0;
+	font-size: 2em;
+	border: none;
+	background-color: black;
+
+
+}
+
+
+.graphNavItem:hover{
+
+	height:100%;
+	width: 100%;
+ 	margin:0;
+	padding:0;
+	font-size: 2em;
+	color:black;
+	background-color: white;
+
+}
+
+.graphButton{
+
+	height:100%;
+	width: 100%;
+ 	margin:0;
+	padding:0;
+	font-size: 2em;
+	border: none;
+	background-color: black;
+
+
+}
+
+
+.graphButton:hover{
+
+	height:100%;
+	width: 100%;
+ 	margin:0;
+	padding:0;
+	font-size: 2em;
+	border: dashed black;
+	color:black;
+	background-color: white;
+
+}
+
+
+#graphWord{
+
+    background-color: #333533; /* Green */
+    border: none;
+    color: #EEF1E7;
+    text-align: center;
+    display: inline-block;
+    font-size: 2em;
+    padding:0;
+    height:100%;
+    width:100%;
+
+}
+
+#graphWord:hover{
+
+    background-color: #EEF1E7; /* Green */
+    border: none;
+    color: #333533;
+    text-align: center;
+    display: inline-block;
+    font-size: 2em;
+    padding:0;
+    height:100%;
+    width:100%;
+
+}
+
+
+.graphOption{
+	width:100%;
+	height:100%;
+	background-color:black;
+	color:white;
+	border: black;
+
+}
+
+
+
 
 #mainTitle{
 	font-size: 6em;
@@ -51,17 +180,10 @@
 }
 
 
-.left{
-	border: dashed pink;
-	height:100%;
-	background-color: #CFDBD5;
-
-
-}
 
 .right{
 
-	border: dashed pink;
+/*	border: dashed pink;*/
 	height:100%;
 	background-color: #CFDBD5;
 }
@@ -82,17 +204,27 @@
 
 }
 
-/*LEFT SIDE BUTTON*/
+/*BOTTOM*/
 
-.liButton{
-	margin:10%;
-	list-style: none;
-	font-size: 2em;
+.ulButton{
+	display: flex;
+	padding:0;
+	margin:0;
+	justify-content: center;
 
 
 }
 
-.btn{
+.liButton{
+	width:50%;
+	list-style: none;
+	font-size: 2em;
+	margin:1%;
+
+
+}
+
+.bttn{
 	width: 100%;
 	font-size: 2rem;
 	text-align: center;
@@ -130,6 +262,20 @@
 
 }
 
+#snap{
+	background-color: yellow;
+	color: black; 
+
+}
+
+#snap:hover{
+
+	background-color: black;
+	color: yellow; 
+
+
+
+}
 .socialDetail{
 
 	list-style: none;
@@ -183,7 +329,7 @@
 }*/
 
 .middle{
-	border: dashed blue;
+/*	border: dashed blue;*/
 	background-color: beige;
 	height: 60em;
 
