@@ -1,18 +1,141 @@
-.topDiv{
-	background-color: #333533;
-	color: #EEF1E7;
-	width: 100%;
+
+.top{
+	background-color: beige;
+	text-align: center;
+	height: 10%;
+	
+
+
+}
+
+.logoDiv{
+	height:100%;
+
+
+}
+
+.nav{
+
+	height: 100%;
+	margin: 0;
+	padding:0;
 
 }
 
 
+.logo{
+	background-color: #F8DD97;
+
+
+}
 
 #mainTitle{
-	height:20%;
-	font-size: 5em;
+	font-size: 6em;
+	margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+
 
 }
 
+/*MIDDLE PORTION*/
+
+.middle{
+	height: 10em;
+	margin: 0;
+	padding:0;
+	height: 2%;
+
+
+}
+
+
+.left{
+	border: dashed pink;
+	height:100%;
+	background-color: #CFDBD5;
+
+
+}
+
+.right{
+
+	border: dashed pink;
+	height:100%;
+	background-color: #CFDBD5;
+}
+
+
+.center{
+	
+	border: black;
+	height:100%;
+	background-color: white;	
+
+
+}
+
+.sideHeader{
+	text-align: center;
+	text-decoration: underline;
+
+}
+
+/*LEFT SIDE BUTTON*/
+
+.liButton{
+	margin:10%;
+	list-style: none;
+	font-size: 2em;
+
+
+}
+
+.btn{
+	width: 100%;
+	font-size: 2rem;
+	text-align: center;
+
+
+
+}
+
+#tsla{
+	background-color: blue;
+	color: white; 
+
+
+
+}
+
+#tsla:hover{
+
+	background-color: white;
+	color: blue; 
+}
+
+
+#ko{
+	background-color: red;
+	color: white; 
+
+}
+
+#ko:hover{
+
+	background-color: white;
+	color: red; 
+
+
+}
+
+.socialDetail{
+
+	list-style: none;
+
+
+}
 
 .row{
 
@@ -51,20 +174,18 @@
 }
 
 
-
-.col-sm-3{
+/*.col-sm-3{
 
 	border: dashed white;
 	height: 100%;
 	padding:0;
 
-}
+}*/
 
 .middle{
 	border: dashed blue;
 	background-color: beige;
 	height: 60em;
-
 
 
 }
