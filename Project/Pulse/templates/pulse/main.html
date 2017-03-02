@@ -6,21 +6,35 @@
 	<head>
 		<title> Pulse </title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../../static/pulse/css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
 		<div class="row top" id ="topRow">
-			<div class="col-sm-3 nav logo">
+			<div class="col-sm-3 nav" id="logo">
 				<div class="logoDiv">
 					<p id="mainTitle"> PULSE </p>
-					<p> kahjsdkhaskdh </p>
 				</div>
 			</div>
 	    	<div class="col-sm-3 nav">
-	    			<input type="submit" class="button" value= "Graph Type"></button>
+	    			<div class="dropdown show graphType">
+					  	<a class="btn btn-secondary dropdown-toggle graphNavItem" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    	<p id="graphWord"> Graph Type </p>
+					  	</a>
+
+						<div class="dropdown-menu ddg" aria-labelledby="dropdownMenuLink">
+							<ul class="dropdownList">
+								<li id='lineOption' class="graphOption">
+									<input type="submit" class="dropdown-item graphButton" href="#" value="Line">
+								</li>
+								<li id="barOption" class="graphOption">
+									<input type="submit" class="dropdown-item graphButton" href="#" value="Bar">
+								</li>
+							</ul>
+						</div>
+					</div>
 	    	</div>
 		    <div class="col-sm-3 nav">
 			    <div class="innerNavDiv">
@@ -35,21 +49,7 @@
   		</div>
 
 	  	<div class="row middle">
-  				<div class="col-sm-2 left">
-	  				<h2 id="sideHeader"> Stock Options </h1>
-	  				<ul class="ulButton">
-	  					<li class="liButton">
-	  						<input id="tsla" class="btn" value="Tesla, Inc. (TSLA)" type="submit"></button>
-  						</li>
-  						<li class="liButton">
-	  						<input id="ko" class="btn" value="The Coca-Cola Company (KO)" type="submit"></button>
-  						</li>
-	  					<li class="liButton">
-	  						<input id = "tst" class="btn" value="TEST (TST)" type="submit"></button>
-  						</li>
-	  				</ul>
-  				</div>
-		    	<div class="col-sm-7 center">
+		    	<div class="col-sm-9 center">
 
 		    	</div>
 			    <div class="col-sm-3 right">
@@ -60,8 +60,26 @@
 			    		<li class="socialDetail"> TEST </li>
 			    		<li class="socialDetail"> TEST </li>
 			    	</ul>
-			    </div>
-
+			    </div>	    
+		</div>
+		<div class="row bottom">
+			<div class="col-sm-2 void">
+			</div>
+			<div class="col-sm-8 buttons">
+				<ul class="ulButton">
+					<li class="liButton">
+						<input id="tsla" class="bttn" value="Tesla, Inc. (TSLA)" type="submit"></button>
+					</li>
+					<li class="liButton">
+						<input id="ko" class="bttn" value="The Coca-Cola Company (KO)" type="submit"></button>
+					</li>
+					<li class="liButton">
+						<input id = "snap" class="bttn" value="Snap Inc. (SNAP)" type="submit"></button>
+					</li>
+				</ul>
+  			</div>
+  			<div class="col-sm-2 void">
+			</div>
 		</div>
 
 
