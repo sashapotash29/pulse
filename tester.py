@@ -2,7 +2,7 @@ from django.shortcuts import render
 import feedparser
 from bs4 import BeautifulSoup
 import requests
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 # from models import *
 
@@ -27,10 +27,12 @@ def news_parse():
 	    	news_link = item.link.string
 	    	print(news_link)
 	    	news_date = item.pubdate.string
-	    	
-	    	# datetime_object = datetime.strptime('news_date', '%b %d %Y %I:%M%p')
-	    	print(news_date)
-	    	# print(datetime_object)
+	    	date_news = ''
+	    	for index in range(5, len(news_date)):
+	    		date_news += news_date[index]
+
+	    	datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
+	    	print(datetime_object)
 	    	print("**=======================**")
 
 
@@ -69,6 +71,10 @@ def tweet_parse():
 					print(item.title.string)
 					print(item.pubdate.string)
 					date=item.pubdate.string
+					for index in range(5, len(news_date)):
+						date_news += news_date[index]
+					datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
+					print(datetime_object)
 					print(item.link.string)
 					link=item.link.string
 					author=item.findAll('dc:creator')
@@ -92,6 +98,5 @@ def tweet_parse():
 
 
 # FUNCTION TESTING AREA
-
 tweet_parse()
 news_parse()
