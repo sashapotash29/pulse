@@ -2,67 +2,96 @@ from django.shortcuts import render
 import feedparser
 from bs4 import BeautifulSoup
 import requests
-from models import *
+from datetime import datetime, date
+
+# from models import *
 
 # Create your views here.
 
 
 def news_parse():
+	news_counter = 0
 	name_list = ['tesla', 'snap', 'cocacola']
 
 	for name in name_list:
 	    news_url= "https://news.google.com/news?q="+name+"&output=rss"
 
 
-	    feed = feedparser.parse(news_url)['entries']
+	    news_feed = requests.get(news_url).content
 
-	    print(name)
-	    print(' ')
+	    news_soup = BeautifulSoup(news_feed,'html.parser')
+	    for item in news_soup.findAll('item'):
+	    	print("^^=======================^^")
+	    	news_title = item.title.string
+	    	print(news_title)
+	    	news_link = item.link.string
+	    	print(news_link)
+	    	news_date = item.pubdate.string
+	    	
+	    	# datetime_object = datetime.strptime('news_date', '%b %d %Y %I:%M%p')
+	    	print(news_date)
+	    	# print(datetime_object)
+	    	print("**=======================**")
 
-	    print('Length is ' + str(len(feed)))
-	    for feed_bit in feed:
-	        print(feed_bit['title'])
-	        print(feed_bit['link'])
-	        print(feed_bit['summary_detail']['value'])
-
-	        print(' ')
-
-	    print(' ')
 
 
 def tweet_parse():
-	name_list=['tferriss']
-	for name in name_list:
-		url = 'https://twitrss.me/twitter_user_to_rss/?user='+name
+	tweet_counter = 0
+	tweeters_list=['WarrenBuffet','Carl_C_Icahn', 'ReformedBroker',
+	 'Schuldensuehner', 'katie_martin_fx', 'StockCats', 'KevinBCook', 
+	 'TheStalwart', 'ZacksResearch','John_Hempton', 'pkedrosky','GoldmanSachs', 
+	 'EddyElfenbein', 'ritholtz', 'howardlindzon', 'EnisTaner', 'IvantheK', 'mebfaber',
+	 'dvolatility', 'AswathDamodaran', 'RyanDetrick', 'zerohedge', 'sspencer_smb']
+
+	for tweeter in tweeters_list:
+		url = 'https://twitrss.me/twitter_user_to_rss/?user='+tweeter
 		soup = requests.get(url).content
-		# feed = feedparser.parse(url)
-		# print(soup2)
-		x=BeautifulSoup(soup,'html.parser')
+		if soup == None:
+			print("Something Broke...")
+			pass
+		else:
+			tweet_soup = BeautifulSoup(soup,'html.parser')
+			# ITERATE THROUGH TWEET OBJECTS
+			for item in tweet_soup.findAll('item'):
+				title=item.title.string
+				if 'Tesla' in title or 'tesla' in title: 
+					print('TESLA')
+					print(item.title.string)
+					print(item.pubdate.string)
+					date=item.pubdate.string
+					print(item.link.string)
+					link=item.link.string
+					author=item.findAll('dc:creator')
+					print(author[0].string)
+					tweet_counter +=1
+				if 'coke' in title or 'coca' in title or 'Coca' in title:
+					print('COCA COLA')
+					print(item.title.string)
+					print(item.pubdate.string)
+					date=item.pubdate.string
+					print(item.link.string)
+					link=item.link.string
+					author=item.findAll('dc:creator')
+					print(author[0].string)
+					tweet_counter +=1
+				if 'Snap' in title or 'snap' in title:
+					print('SNAPCHAT')
+					print(item.title.string)
+					print(item.pubdate.string)
+					date=item.pubdate.string
+					print(item.link.string)
+					link=item.link.string
+					author=item.findAll('dc:creator')
+					print(author[0].string)
+					tweet_counter +=1
+				else:
+					print(tweeter + " had nothing to offer us.")
 		
-		# z=0
-		for item in x.findAll('item'):
-			title=item.title.string
-			if 'life' in title or 'Life' in title: 
-				print(item.title.string)
-				print(item.pubdate.string)
-				date=item.pubdate.string
-				print(item.link.string)
-				link=item.link.string
-				author=item.findAll('dc:creator')
-				print(author[0].string)
-			else:
-				pass
-				# print('nothing')
-			# print(y.creator)
-			# if item.name=='dc:creator':
-				# print(item.string)
-				# pass
-			# else:
-				# pass
-				# if ' media' in str(y):
-				# 	# print(y.string)
-				# 	pass
-				# else:
-				# 	pass
-		# print(z)
+
+
+
+
+# FUNCTION TESTING AREA
+
 tweet_parse()
+news_parse()
