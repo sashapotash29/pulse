@@ -1,6 +1,9 @@
 from django.conf.urls import url
 from . import views
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
-	url(r'^$',views.graphs, name="graphs"),
+	url(r'^graph$',views.graphs, name="graphs"),
+	url(r'^feed$',csrf_exempt(views.save_news_feed), name="feed"),
+
 ]
