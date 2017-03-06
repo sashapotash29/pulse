@@ -1,18 +1,26 @@
 from django.shortcuts import render
+# from django.db import transactions
 import feedparser
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime, date, timedelta
+from django.shortcuts import render
+import json
 
 # from models import *
 
 # Create your views here.
 
+# Create your views here.
+
+
+
 
 def news_parse():
 	news_counter = 0
 	name_list = ['tesla', 'snap', 'cocacola']
-
+	final_obj={}
+	data_list=[]
 	for name in name_list:
 	    news_url= "https://news.google.com/news?q="+name+"&output=rss"
 
@@ -21,19 +29,50 @@ def news_parse():
 
 	    news_soup = BeautifulSoup(news_feed,'html.parser')
 	    for item in news_soup.findAll('item'):
-	    	print("^^=======================^^")
-	    	news_title = item.title.string
-	    	print(news_title)
-	    	news_link = item.link.string
-	    	print(news_link)
 	    	news_date = item.pubdate.string
-	    	date_news = ''
-	    	for index in range(5, len(news_date)):
-	    		date_news += news_date[index]
+	    	
+	    	news_date = news_date[5:len(news_date)]
+	    	print(news_date)
+	    	# print(date_news)
+	    	date_time_object=datetime.strptime(news_date, '%d %b %Y %H:%M:%S %Z')
+	    	
+	    	
+	    	today=datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+	    	date_object=datetime.strptime(news_date, '%d %b %Y %H:%M:%S %Z').replace(hour=0, minute=0, second=0, microsecond=0)
+	    	if today == date_object:
+	    		print('yes')
+	    		
+		    	# print("^^=======================^^")
+		    	soup_title = item.title.string
+		    	title_list = soup_title.split(' - ')
+		    	list_len = len(title_list)
+		    	title = title_list[0]
+		    	author = title_list[list_len-1]
+		    	if list_len>2:
+		    		author = title_list[1] + ' ' + title_list[2]
+		    	# print(title)
+		    	# print(author)
+		    	news_title = item.title.string
+		    	data={'company':name,'source':'News' ,'link' : str(item.link.string) ,'author' : author ,'title' : title ,'content' : str(item.description.string) ,'date_pub' : str(date_time_object) ,'key_word' : name}
+		    	# print(data)
+		    	data_list.append(data)
+		    	# print(data_list)
+	final_obj['result']=data_list
+	# print(final_obj)
+	data=json.dumps(final_obj)
+	# print(data)
+	r = requests.post('http://127.0.0.1:8000/feed',data=data)
+	print(r.status_code, r.reason)
+		    	# Hit.save()
+		    	# print(news_title)
+		    	# news_link : item.link.string
+		    	# print(news_link)
 
-	    	datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
-	    	print(datetime_object)
-	    	print("**=======================**")
+	    	# print(datetime_object)
+	    	# print(date_news)
+	    	# print(datetime.today())
+	    	# print("**=======================**")
+	    	
 
 
 
@@ -98,5 +137,5 @@ def tweet_parse():
 
 
 # FUNCTION TESTING AREA
-tweet_parse()
+# tweet_parse()
 news_parse()
