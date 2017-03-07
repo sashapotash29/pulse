@@ -9,7 +9,7 @@ import json
 import time
 from celery import Celery
 
-app = Celery('tasks', backend='amqp', broker='amqp://localhost:5672/')
+app = Celery('parser', backend='amqp', broker='amqp://localhost:5672/')
 
 # from models import *
 
@@ -74,7 +74,7 @@ def news_parse():
 
 		print(data)
 		r = requests.post('http://127.0.0.1:8000/newsfeed',data=data)
-		print(r.status_code, r.reason)
+		print(r.status_code, r.reason,'news')
 		time.sleep(86400)
 			    	
 	    	
@@ -194,7 +194,7 @@ def tweet_parse():
 		data=json.dumps(final_obj)
 		# print(data)
 		r = requests.post('http://127.0.0.1:8000/tweetfeed',data=data)
-		print(r.status_code, r.reason)
+		print(r.status_code, r.reason,'tweet')
 		time.sleep(600)	
 
 
