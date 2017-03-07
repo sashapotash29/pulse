@@ -20,20 +20,32 @@ def news_parse():
 	    news_feed = requests.get(news_url).content
 
 	    news_soup = BeautifulSoup(news_feed,'html.parser')
-	    for item in news_soup.findAll('item'):
-	    	print("^^=======================^^")
-	    	news_title = item.title.string
-	    	print(news_title)
-	    	news_link = item.link.string
-	    	print(news_link)
-	    	news_date = item.pubdate.string
-	    	date_news = ''
-	    	for index in range(5, len(news_date)):
-	    		date_news += news_date[index]
+	    # print(news_soup)
+	    for item in news_soup.findAll():
+	    	print(item)
+	    	# x = item.title.string
+	    	# y = x.split(' - ')
+	    	# z = len(y)
+	    	# title = y[0]
+	    	# author = y[z-1]
+	    	# if z>2:
+	    	# 	author = y[1] + ' ' + y[2]
+	    	# print(title)
+	    	# print(author)
+	    	# print(item.title.string.split(' - '))
+	    	# print("^^=======================^^")
+	    	# news_title = item.title.string
+	    	# print(news_title)
+	    	# news_link = item.link.string
+	    	# print(news_link)
+	    	# news_date = item.pubdate.string
+	    	# date_news = ''
+	    	# for index in range(5, len(news_date)):
+	    	# 	date_news += news_date[index]
 
-	    	datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
-	    	print(datetime_object)
-	    	print("**=======================**")
+	    	# datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
+	    	# print(datetime_object)
+	    	# print("**=======================**")
 
 
 
@@ -98,5 +110,9 @@ def tweet_parse():
 
 
 # FUNCTION TESTING AREA
-tweet_parse()
+# tweet_parse()
 news_parse()
+
+
+
+
