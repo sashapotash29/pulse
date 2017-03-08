@@ -1,3 +1,13 @@
+.graphArea{
+
+	border:dashed black;
+	height: 100%;
+	width:100%;
+	position: relative;
+	margin:auto;
+
+}
+
 
 .top{
 	background-color: beige;
@@ -17,8 +27,11 @@
 
 .logoDiv{
 	height:100%;
-	display: inline-block;
-
+	margin:0;
+	padding:0;
+	vertical-align: center;
+	text-align: center;
+	bottom:10%;
 }
 
 .nav{
@@ -32,7 +45,12 @@
 
 #logo{
 	background-color: #F8DD97;
-
+	height:100%;
+	margin:0;
+	padding:0;
+	vertical-align: center;
+	text-align: center;
+	bottom:10%;
 
 }
 
@@ -123,9 +141,11 @@
     border: none;
     color: #EEF1E7;
     text-align: center;
+    vertical-align: center;
     display: inline-block;
-    font-size: 2em;
+    font-size: 2.3em;
     padding:0;
+    margin:0;
     height:100%;
     width:100%;
 
@@ -138,7 +158,6 @@
     color: #333533;
     text-align: center;
     display: inline-block;
-    font-size: 2em;
     padding:0;
     height:100%;
     width:100%;
@@ -160,10 +179,11 @@
 
 #mainTitle{
 	font-size: 6em;
-	margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
+	height:100%;
+	margin:0;
+	padding:0;
+	text-align: center;
+	vertical-align: center;
 
 
 }

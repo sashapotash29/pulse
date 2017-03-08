@@ -18,5 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'',include('Pulse.urls')),
+    url(r'',include('Pulse.urls',namespace='graph')),
+    url(r'',include('Pulse.urls',namespace='feed')),
+    # url(r'news/',include('Feed.urls')),
 ]
