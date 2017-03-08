@@ -46,9 +46,10 @@ def news_parse():
 		    	# print(date_news)
 		    	
 		    	today=datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
+		    	compare = today
 		    	date_object=datetime.strptime(news_date, '%d %b %Y %H:%M:%S %Z').replace(hour=0, minute=0, second=0, microsecond=0)
 		    	print(date_object)
-		    	if today == date_object:
+		    	if compare == date_object:
 		    		print('yes')
 		    		
 			    	# print("^^=======================^^")
@@ -65,7 +66,7 @@ def news_parse():
 			    	data={'company':name, 'source':'News', 'link' : str(item.link.string),
 			    	'author' : author, 'title' : title, 'content' : str(item.description.string),
 			    	'date_pub' : str(date_time_object), 'key_word' : name}
-			    	# print(data)
+			    	print(name + 'news found')
 			    	data_list.append(data)
 			    	# print(data_list)
 		final_obj['result']=data_list
@@ -74,7 +75,7 @@ def news_parse():
 
 		print(data)
 		r = requests.post('http://127.0.0.1:8000/newsfeed',data=data)
-		print(r.status_code, r.reason,'news')
+		print(r.status_code, r.reason,'news finish')
 		time.sleep(86400)
 			    	
 	    	
@@ -91,7 +92,11 @@ def tweet_parse():
 		 'EddyElfenbein', 'ritholtz', 'howardlindzon', 'EnisTaner', 'IvantheK', 'mebfaber',
 		 'dvolatility', 'AswathDamodaran', 'RyanDetrick', 'zerohedge', 'sspencer_smb','JohnArnoldFndtn',
 		 'richardbranson','realDonaldTrump','JeffBezos','fredwilson','carlquintanilla','IamSimonHhill',
-		 'davidfaber','Kyle_L_Wiggers','steveliesman','GoogleTrends']
+		 'davidfaber','Kyle_L_Wiggers','steveliesman','GoogleTrends','kitjuckes', 'Lavorgnanomics', 
+		 'TMTanalyst', 'DavidSchawel', 'davidjpowell24', 'TheSkeptic21', 'conorsen', 'allstarcharts', 
+		 'RiskReversal', 'InterestArb', 'mark_dow', 'auaurelija', 'MarketPlunger', 'barnejek', 
+		 'ericjackson', 'brianmlucey', 'fwred', 'muddywatersre', 'groditi', 'kiffmeister', 
+		 'Fullcarry', 'mbusigin', 'prchovanec', 'michaelkitces']
 		data_list=[]
 		final_obj={}
 
@@ -119,7 +124,7 @@ def tweet_parse():
 					# print(date_news)
 					now = datetime.utcnow()
 					# now=datetime.strptime(now, '%d %b %Y %H:%M:%S %z')
-					compare=now-timedelta(minutes=10)
+					compare = now-timedelta(minutes=10)
 					# print('now')
 					# print(now)
 					# print ('compare')
@@ -147,7 +152,7 @@ def tweet_parse():
 							data={'company':'tesla', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : author, 'title' : title, 'content' : title,
 							'date_pub' : str(date_time_object), 'key_word' : 'Tesla, tesla'}
-							print(data)
+							print('tesla hit found')
 							data_list.append(data)
 						if 'coke' in title or 'coca' in title or 'Coca' in title:
 							print('COCA COLA')
@@ -166,7 +171,7 @@ def tweet_parse():
 							data={'company':'cocacola', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : author, 'title' : title, 'content' : title,
 							'date_pub' : str(date_time_object), 'key_word' : 'Coke, coca, Coca'}
-							print(data)
+							print('coke hit found')
 							data_list.append(data)
 						if 'Snap' in title or 'snap' in title:
 							print('SNAPCHAT')
@@ -182,7 +187,7 @@ def tweet_parse():
 							data={'company':'snap', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : author, 'title' : title, 'content' : title,
 							'date_pub' : str(date_time_object), 'key_word' : 'snap, Snap'}
-							print(data)
+							print('snap hit found')
 							data_list.append(data)
 						else:
 							pass
@@ -194,7 +199,7 @@ def tweet_parse():
 		data=json.dumps(final_obj)
 		# print(data)
 		r = requests.post('http://127.0.0.1:8000/tweetfeed',data=data)
-		print(r.status_code, r.reason,'tweet')
+		print(r.status_code, r.reason,'tweet finished')
 		time.sleep(600)	
 
 

@@ -15,6 +15,7 @@ app = Celery('tasks', backend='amqp', broker='amqp://localhost:5672/')
 
 # Create your views here.
 
+
 def news_parse():
 	news_counter = 0
 	name_list = ['tesla', 'snap', 'cocacola']
