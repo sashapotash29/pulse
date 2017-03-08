@@ -126,7 +126,7 @@ def tweet_parse():
 					# print (compare)
 				
 					if date_time_object>=compare:
-						print('yes')
+						print('time check good')
 						# print(date_time_object)
 						# if item.date_pub==0:
 					# 	pass
@@ -187,7 +187,7 @@ def tweet_parse():
 						else:
 							pass
 							print(tweeter + " had nothing to offer us.")
-						print(tweet_counter)
+						# print(tweet_counter)
 		
 		final_obj['result']=data_list
 		# print(final_obj)

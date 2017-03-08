@@ -5,6 +5,10 @@ from .models import *
 
 def graphs(request):
 	print('graphsssss')
+	hits = Hit.objects.filter(company='tesla')
+	print(len(hits))
+	# print(hits.objects)
+	# print(hits)
 	return render(request, 'pulse/main.html',{})
 
 def save_news_feed(request):
