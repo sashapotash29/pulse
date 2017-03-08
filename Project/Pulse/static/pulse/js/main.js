@@ -1,3 +1,26 @@
+var bulk_info = $.ajax(
+		{
+			url: 'http://127.0.0.1:8000/graph',
+			method: 'GET',
+			success: function(result){
+				return result
+
+			}
+		}
+)
+ const tesla_info = bulk_info['result']['tesla']
+ const coke_info = bulk_info['result']['coke']
+ const snap_info = bulk_info['result']['snap']
+
+var package_for_line = function(stock_info){
+	
+	
+
+	
+}
+
+
+
 require.config({
 			baseUrl: '/js',
 			paths: {
@@ -52,7 +75,7 @@ var make_line_graph = function(){
 
 document.getElementById('tsla').addEventListener('click', function(e){
 	e.preventDefault()
-	
+
 	console.log('clicked')
 
 	make_line_graph()
@@ -62,7 +85,7 @@ document.getElementById('ko').addEventListener('click', function(e){
 	e.preventDefault()
 	console.log('clicked')
 
-	make_line_graph()
+	make_bar_graph()
 
 });
 document.getElementById('snap').addEventListener('click', function(e){

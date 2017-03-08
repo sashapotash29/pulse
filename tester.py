@@ -15,8 +15,6 @@ app = Celery('tasks', backend='amqp', broker='amqp://localhost:5672/')
 
 # Create your views here.
 
-<<<<<<< HEAD
-
 def news_parse():
 	news_counter = 0
 	name_list = ['tesla', 'snap', 'cocacola']
@@ -54,9 +52,7 @@ def news_parse():
 	    	# datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
 	    	# print(datetime_object)
 	    	# print("**=======================**")
-=======
-# Create your views here.
->>>>>>> 52c9f5a4e6c97b21eccb0619eb35654bf547923f
+
 
 
 
@@ -243,12 +239,9 @@ def tweet_parse():
 
 # FUNCTION TESTING AREA
 # tweet_parse()
-<<<<<<< HEAD
 news_parse()
 
 
 
 
-=======
-# news_parse()
->>>>>>> 52c9f5a4e6c97b21eccb0619eb35654bf547923f
+
