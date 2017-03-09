@@ -1,17 +1,46 @@
+// var tesla_info=[];
+// var coke_info=[]; 
+// var snap_info=[]; 
+var tesla_info; 
+var coke_info;
+var snap_info;
+
+var data;
 var bulk_info = $.ajax(
 		{
 			url: 'http://127.0.0.1:8000/graph',
 			method: 'GET',
 			success: function(result){
-				return result
-
+				data = JSON.parse(result);
+				// console.log('data')
+				// console.log(data)
+				tesla_info = data['result']['tesla']
+				coke_info = data['result']['coke']
+				snap_info = data['result']['snap']
+				// return data
 			}
 		}
 )
 
-const tesla_info = bulk_info['result']['tesla']
-const coke_info = bulk_info['result']['coke']
-const snap_info = bulk_info['result']['snap']
+
+// console.log(tesla_info)
+// function sleep(miliseconds) {
+//    var currentTime = new Date().getTime();
+
+//    while (currentTime + miliseconds >= new Date().getTime()) {
+//    }
+// }
+
+// console.log('data');
+// console.log(data);
+
+
+// sleep(5000)
+// console.log('bulk_info')
+// console.log(bulk_info.responseText)
+
+
+
 
 var unpack_for_line = function(ticker,stock_info){
 	var price_list = stock_info
@@ -57,7 +86,7 @@ var make_bar_graph = function(){
 
 };
 
-price count date
+// price count date
 
 var make_line_graph = function(ticker, stock_info){
 	const price_list = [ticker].concat(stock_info[0])
