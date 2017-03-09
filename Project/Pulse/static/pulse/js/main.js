@@ -64,18 +64,25 @@ require.config({
 
 // STATIC FUNCTIONS
 
-var make_bar_graph = function(){
+var make_bar_graph = function(stock_info){
 	console.log("making BAR graph")
+	const stock_data = stock_info[0]
+	const ticker = stock_info[0]['company']
+	const count_list = ['Activity'].concat(stock_info[1])
+	const price_list = [ticker].concat(stock_data['price_list'])
+	const date_list = ['x'].concat(stock_info[2])
+
 	require(["d3", "c3"], function(d3, c3) {
 
 		var chart = c3.generate({
 			bindto: '.graphArea',
 	    	data: {
+
 	        	columns: [
-	            	['stock_price', 30, 200, 100, 400, 150, 250,1000],
-	            	['news_artciles', 130, 100, 140, 200, 150, 50,1000],
-	            	['tweets', 400, 150, 10, 20, 30, 40,1000],
-	        	],
+	            		// date_list,
+	            		price_list,
+        				count_list
+        		],
 	        	type: 'bar'
 	    	},
 	   		bar: {
@@ -91,10 +98,11 @@ var make_bar_graph = function(){
 
 // price count date
 
-var make_line_graph = function(ticker, stock_info){
+var make_line_graph = function(stock_info){
 	console.log("making LINE graph")
 	const stock_data = stock_info[0]
-	console.log(stock_data)
+	console.log(stock_info)
+	const ticker = stock_info[0]['company']
 	const price_list = [ticker].concat(stock_data['price_list'])
 	console.log(price_list)
 	const count_list = ['Activity'].concat(stock_info[1])
@@ -110,7 +118,7 @@ var make_line_graph = function(ticker, stock_info){
         		columns: [date_list,
         				price_list,
         				count_list
-        				],
+        		],
         		axes:{
         			'Activity': 'y2'
         		}
@@ -151,47 +159,60 @@ var make_line_graph = function(ticker, stock_info){
 
 
 $('#tsla').on('click', function(){
+	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
 	console.log('clicked')
-
-	make_line_graph('TSLA', tesla_info)
+	var tesla = $(this)
+	tesla.addClass('active')
+	$('#ko').removeClass('active')
+	$('#snap').removeClass('active')
+	make_line_graph(tesla_info)
 
 });
 
 $('#ko').on('click', function(e){
+	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
 	console.log('clicked')
-
-	make_line_graph('KO', coke_info)
+	$(this).addClass('active')
+	$('#snap').removeClass('active')
+	$('#tsla').removeClass('active')
+	make_line_graph(coke_info)
 
 });
 
 $('#snap').on('click', function(e){
+	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
 	console.log('clicked')
-
+	$(this).addClass('active')
+	$('#ko').removeClass('active')
+	$('#tsla').removeClass('active')
+	make_line_graph(snap_info)
 	
-	make_line_graph('SNAP', snap_info)
 	
-	
-	make_bar_graph('SNAP', snap_info)
+	// make_bar_graph('SNAP', snap_info)
 	
 	
 
 });
 
 $('.graphButton').on('click', function(){
-	console.log(this.value)
-
+	// console.log(this.value)
+	var graphArea =$('.graphArea'); 
 	if (this.value == 'Bar'){
 		this.value = 'Line'
-		
+		graphArea.empty()
+		var info=check()
+		make_bar_graph(info)	
 
 	}
 
 	else if(this.value == 'Line'){
 		this.value = 'Bar'
-
+		graphArea.empty()
+		var info=check()
+		make_line_graph(info)
 		
 	}
 	else{
@@ -204,5 +225,19 @@ $('.graphButton').on('click', function(){
 
 });
 
+var check = function(){
+	var active=$('.active');
+	// console.log('[[[[[[[[[[[[[[[[[[[[active.id')
+	// console.log(active[0].id)
 
+	if (active[0].id=='tsla'){
+		return tesla_info
+	}
+	else if (active[0].id=='ko'){
+		return coke_info
+	}
+	else{
+		return snap_info
+	}
+}
 
