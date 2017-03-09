@@ -102,7 +102,8 @@ def make_stock_list(tick):
 	for index, row in dataframe.iterrows():
 		price_list.append(row.Close)
 		# print('++++++++++++++++++++++++++++++++++++++++++++++')
-		# print(type(row.Date))
+		# print(tick)
+		# print
 
 		date_list.append(row.Date)
 	stock_product = {
