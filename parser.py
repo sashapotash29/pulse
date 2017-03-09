@@ -37,20 +37,23 @@ def news_parse():
 		    for item in news_soup.findAll('item'):
 		    	
 		    	news_date = item.pubdate.string
-		    	print(news_date)
+		    	# print(news_date)
 		    	
 		    	news_date = news_date[5:len(news_date)]
-		    	print(news_date)
+		    	# print(news_date)
 		    	
 		    	date_time_object=datetime.strptime(news_date, '%d %b %Y %H:%M:%S %Z')
 		    	# print(date_news)
 		    	
-		    	today=datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
-		    	compare = today
-		    	date_object=datetime.strptime(news_date, '%d %b %Y %H:%M:%S %Z').replace(hour=0, minute=0, second=0, microsecond=0)
+		    	today=datetime.utcnow()
+		    	compare = today - timedelta(hours=1)
+		    	print('compare')
+		    	print(compare)
+		    	date_object=datetime.strptime(news_date, '%d %b %Y %H:%M:%S %Z')
+		    	print('date_object')
 		    	print(date_object)
-		    	if compare == date_object:
-		    		print('yes')
+		    	if compare < date_object:
+		    		print('time check passed')
 		    		
 			    	# print("^^=======================^^")
 			    	soup_title = item.title.string
@@ -72,11 +75,13 @@ def news_parse():
 		final_obj['result']=data_list
 		# print(final_obj)
 		data=json.dumps(final_obj)
-
-		print(data)
-		r = requests.post('http://127.0.0.1:8000/newsfeed',data=data)
-		print(r.status_code, r.reason,'news finish')
-		time.sleep(86400)
+		if len(data_list) > 0:
+			# print(data)
+			r = requests.post('http://127.0.0.1:8000/newsfeed',data=data)
+			print(r.status_code, r.reason,'news finish')
+		else:
+			print('no news to send')
+		time.sleep(3600)
 			    	
 	    	
 
@@ -96,13 +101,17 @@ def tweet_parse():
 		 'TMTanalyst', 'DavidSchawel', 'davidjpowell24', 'TheSkeptic21', 'conorsen', 'allstarcharts', 
 		 'RiskReversal', 'InterestArb', 'mark_dow', 'auaurelija', 'MarketPlunger', 'barnejek', 
 		 'ericjackson', 'brianmlucey', 'fwred', 'muddywatersre', 'groditi', 'kiffmeister', 
-		 'Fullcarry', 'mbusigin', 'prchovanec', 'michaelkitces']
+		 'Fullcarry', 'mbusigin', 'prchovanec', 'michaelkitces','BI_Advertising', 'Stalingrad_Poor',
+		  'MrScottEddy', 'FoxBusiness','businessinsider', 'markets', 'elonmusk']
 		data_list=[]
 		final_obj={}
-
+		z=0
 		for tweeter in tweeters_list:
 			url = 'https://twitrss.me/twitter_user_to_rss/?user='+tweeter
 			soup = requests.get(url).content
+			print('checking '+tweeter)
+			z+=1
+			print(z)
 			if soup == None:
 				print("Something Broke...")
 				pass
@@ -150,7 +159,7 @@ def tweet_parse():
 							# print(item.link.string)
 
 							data={'company':'tesla', 'source':'Twitter', 'link' : str(item.link.string),
-							'author' : author, 'title' : title, 'content' : title,
+							'author' : str(author), 'title' : title, 'content' : title,
 							'date_pub' : str(date_time_object), 'key_word' : 'Tesla, tesla'}
 							print('tesla hit found')
 							data_list.append(data)
@@ -169,7 +178,7 @@ def tweet_parse():
 							# print(author[0].string)
 							tweet_counter +=1
 							data={'company':'cocacola', 'source':'Twitter', 'link' : str(item.link.string),
-							'author' : author, 'title' : title, 'content' : title,
+							'author' : str(author), 'title' : title, 'content' : title,
 							'date_pub' : str(date_time_object), 'key_word' : 'Coke, coca, Coca'}
 							print('coke hit found')
 							data_list.append(data)
@@ -185,7 +194,7 @@ def tweet_parse():
 							tweet_counter +=1
 
 							data={'company':'snap', 'source':'Twitter', 'link' : str(item.link.string),
-							'author' : author, 'title' : title, 'content' : title,
+							'author' : str(author), 'title' : title, 'content' : title,
 							'date_pub' : str(date_time_object), 'key_word' : 'snap, Snap'}
 							print('snap hit found')
 							data_list.append(data)
@@ -196,10 +205,13 @@ def tweet_parse():
 		
 		final_obj['result']=data_list
 		# print(final_obj)
-		data=json.dumps(final_obj)
-		# print(data)
-		r = requests.post('http://127.0.0.1:8000/tweetfeed',data=data)
-		print(r.status_code, r.reason,'tweet finished')
+		if len(data_list)>0:
+			data=json.dumps(final_obj)
+			# print(data)
+			r = requests.post('http://127.0.0.1:8000/tweetfeed',data=data)
+			print(r.status_code, r.reason,'tweet finished')
+		else:
+			print('no tweets to add')
 		time.sleep(600)	
 
 

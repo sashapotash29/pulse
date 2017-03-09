@@ -1,10 +1,13 @@
 from django.shortcuts import render
+# from django.utils import simplejson
+from django.http import HttpResponse
 import json
 from .models import *
 from datetime import datetime, date, timedelta
 import requests
 import io
 import pandas as pd
+
 # Create your views here.
 
 ##################
@@ -20,34 +23,48 @@ def home(request):
 
 def graphs(request):
 	print('graphsssss')
+	# print(today)
 	today=date.today()
-	print(today)
 	tesla_stock_data = make_stock_list('TSLA') 
 	tesla_date_list = tesla_stock_data['date_list']
-	tesla_hits = Hit.objects.filter(date_pub__contains=today)
-	# tesla_count=len(tesla_hits)
-	tesla_count=date_counter('cocacola', tesla_date_list)
-	# print(len(tesla_hits))
-	tesla_obj = {'tesla':[tesla_count,tesla_stock_data]}
+	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
+	tesla_count_list=date_counter('tesla', tesla_date_list)
+	tesla_obj = {'tesla':[tesla_stock_data,tesla_count_list,tesla_date_list]}
 	
-	# tesla
-
-	coke_stock_data = make_stock_list('KO') 
+	coke_stock_data = make_stock_list('Ko') 
 	coke_date_list = coke_stock_data['date_list']
-	coke_hits = Hit.objects.filter(company='cocacola')
-	coke_count=len(tesla_hits)
-	coke_obj = {'coke':[coke_count,coke_stock_data]}
-	# print(len(coke_hits))
-	
+	# coke_hits = Hit.objects.filter(date_pub__contains=today)
+	# tesla_count=len(tesla_hits)
+	coke_count_list=date_counter('cocacola', coke_date_list)
+	# print(len(tesla_hits))
+	coke_obj = {'cocacola':[coke_stock_data,coke_count_list,coke_date_list]}
+
+
 	snap_stock_data = make_stock_list('SNAP') 
-	snap_hits = Hit.objects.filter(company='snap')
-	snap_count=len(tesla_hits)
-	snap_obj = {'snap':[snap_count,snap_stock_data]}
+	snap_date_list = snap_stock_data['date_list']
+	snap_hits = Hit.objects.filter(date_pub__contains=today)
+	# tesla_count=len(tesla_hits)
+	snap_count_list=date_counter('cocacola', snap_date_list)
+	# print(len(tesla_hits))
+	snap_obj = {'snap':[snap_stock_data,snap_count_list,snap_date_list]}
+
+	# coke_stock_data = make_stock_list('KO') 
+	# coke_date_list = coke_stock_data['date_list']
+	# coke_hits = Hit.objects.filter(company='cocacola')
+	# coke_count=len(tesla_hits)
+	# coke_obj = {'coke':[coke_count,coke_stock_data]}
+	# # print(len(coke_hits))
+	
+	# snap_stock_data = make_stock_list('SNAP') 
+	# snap_hits = Hit.objects.filter(company='snap')
+	# snap_count=len(tesla_hits)
+	# snap_obj = {'snap':[snap_count,snap_stock_data]}
 	# print(hits.objects)
 	# print(hits)
-	final_obj = {'results':[tesla_obj, ] }
-	final_obj
-	return 
+	final_obj = {'results':[tesla_obj, coke_obj, snap_obj]}
+	# final_obj = json.dumps(final_obj)
+	return HttpResponse(json.dumps(final_obj))
+
 
 def date_counter(name, date_list):
 	count_list=[]
@@ -58,8 +75,11 @@ def date_counter(name, date_list):
 		print(date)
 		new_date = datetime.strptime(date, '%Y-%m-%d').date()
 		hits = Hit.objects.filter(company=name, date_pub__contains=new_date)
+		print('counter hits')
 		print(hits)
 		count_list.append(len(hits))
+		print('count list')
+		print(count_list)
 	return count_list
 
 
