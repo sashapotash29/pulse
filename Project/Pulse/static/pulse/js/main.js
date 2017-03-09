@@ -6,22 +6,22 @@ var coke_info;
 var snap_info;
 
 var data;
-// var bulk_info = $.ajax(
-// 		{
-// 			url: 'http://127.0.0.1:8000/graph',
-// 			method: 'GET',
-// 			success: function(result){
-// 				data = JSON.parse(result);
-// 				// console.log('data')
-// 				// console.log(data)
-// 				$('.loader').css('display','none')
-// 				tesla_info = data['result']['tesla']
-// 				coke_info = data['result']['coke']
-// 				snap_info = data['result']['snap']
-// 				// return data
-// 			}
-// 		}
-// )
+var bulk_info = $.ajax(
+		{
+			url: 'http://127.0.0.1:8000/graph',
+			method: 'GET',
+			success: function(result){
+				data = JSON.parse(result);
+				// console.log('data')
+				// console.log(data)
+				$('.loader').css('display','none')
+				tesla_info = data['result']['tesla']
+				coke_info = data['result']['coke']
+				snap_info = data['result']['snap']
+				// return data
+			}
+		}
+)
 
 
 // console.log(tesla_info)
@@ -69,7 +69,7 @@ var make_bar_graph = function(){
 	require(["d3", "c3"], function(d3, c3) {
 
 		var chart = c3.generate({
-			bindto: '.barGraph',
+			bindto: '.graphArea',
 	    	data: {
 	        	columns: [
 	            	['stock_price', 30, 200, 100, 400, 150, 250,1000],
@@ -104,7 +104,7 @@ var make_line_graph = function(ticker, stock_info){
 
 	require(["d3", "c3"], function(d3, c3){
 		var chart = c3.generate({
-			bindto:'.lineGraph',
+			bindto:'.graphArea',
     		data: {
         		x: 'x',
         		columns: [date_list,
@@ -185,15 +185,14 @@ $('.graphButton').on('click', function(){
 
 	if (this.value == 'Bar'){
 		this.value = 'Line'
-		$('.graphArea').addClass('barGraph')
-		$('.graphArea').removeClass('lineGraph')
+		
+
 	}
 
 	else if(this.value == 'Line'){
 		this.value = 'Bar'
-		$('.graphArea').addClass('lineGraph')
-		$('.graphArea').removeClass('barGraph')
 
+		
 	}
 	else{
 		this.value = "Damn it Wes!"
