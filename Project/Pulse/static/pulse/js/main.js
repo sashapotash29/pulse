@@ -14,6 +14,7 @@ var bulk_info = $.ajax(
 				data = JSON.parse(result);
 				// console.log('data')
 				// console.log(data)
+				$('.loader').css('display','none')
 				tesla_info = data['result']['tesla']
 				coke_info = data['result']['coke']
 				snap_info = data['result']['snap']
@@ -89,18 +90,24 @@ var make_bar_graph = function(){
 // price count date
 
 var make_line_graph = function(ticker, stock_info){
-	const price_list = [ticker].concat(stock_info[0])
+	const stock_data = stock_info[0]
+	console.log(stock_data)
+	const price_list = [ticker].concat(stock_data['price_list'])
+	console.log(price_list)
 	const count_list = ['Activity'].concat(stock_info[1])
 	const orig_date_list = stock_info[2]
 	const date_list = ['x'].concat(stock_info[2])
-	const columns = [price_list,count_list, date_list]
+	// const columns = [price_list,count_list, date_list]
 
 	require(["d3", "c3"], function(d3, c3){
 		var chart = c3.generate({
 			bindto:'.graphArea',
     		data: {
         		x: 'x',
-        		columns: columns,
+        		columns: [date_list,
+        				price_list,
+        				count_list
+        				],
         		axes:{
         			'Activity': 'y2'
         		}
@@ -149,7 +156,7 @@ document.getElementById('ko').addEventListener('click', function(e){
 	e.preventDefault()
 	console.log('clicked')
 
-	make_bar_graph('KO', coke_info)
+	make_line_graph('KO', coke_info)
 
 });
 document.getElementById('snap').addEventListener('click', function(e){
