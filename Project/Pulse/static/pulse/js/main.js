@@ -121,7 +121,8 @@ var make_line_graph = function(stock_info){
         		],
         		axes:{
         			'Activity': 'y2'
-        		}
+        		},
+        		onclick: function(e){side_bar(e)}
     		},
     		axis: {
     			y:{
@@ -241,3 +242,7 @@ var check = function(){
 	}
 }
 
+var side_bar=function(e){
+	console.log(e.x)
+	// console.log(this)
+}

@@ -24,7 +24,7 @@ def home(request):
 def graphs(request):
 	print('graphsssss')
 	# print(today)
-	today=date.today()
+	# today=date.today()
 	tesla_stock_data = make_stock_list('TSLA') 
 	tesla_date_list = tesla_stock_data['date_list']
 	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
@@ -42,7 +42,7 @@ def graphs(request):
 
 	snap_stock_data = make_stock_list('SNAP') 
 	snap_date_list = snap_stock_data['date_list']
-	snap_hits = Hit.objects.filter(date_pub__contains=today)
+	# snap_hits = Hit.objects.filter(date_pub__contains=today)
 	# tesla_count=len(tesla_hits)
 	snap_count_list=date_counter('cocacola', snap_date_list)
 	# print(len(tesla_hits))
