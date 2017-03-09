@@ -19,12 +19,13 @@
 
 .graphArea{
 
-	border:dashed black;
+	border:black;
 	height: 100%;
 	width:100%;
 	position: relative;
 	margin:auto;
 	display:flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 
