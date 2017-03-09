@@ -153,8 +153,8 @@ def tweet_parse():
 							date=item.pubdate.string
 							# print(item.link.string)
 							link=item.link.string
-							author=item.findAll('dc:creator')
-							# print(author[0].string)
+							author=item.findAll('dc:creator').string
+							print(author)
 							tweet_counter +=1
 							# print(item.link.string)
 
@@ -168,14 +168,10 @@ def tweet_parse():
 							print(item.title.string)
 							print(item.pubdate.string)
 							date=item.pubdate.string
-							for index in range(5, len(news_date)):
-								date_news += news_date[index]
-							datetime_object = datetime.strptime(date_news, '%d %b %Y %H:%M:%S %Z')
-							print(datetime_object)
 							# print(item.link.string)
 							link=item.link.string
-							author=item.findAll('dc:creator')
-							# print(author[0].string)
+							author=item.findAll('dc:creator').string
+							print(author)
 							tweet_counter +=1
 							data={'company':'cocacola', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : str(author), 'title' : title, 'content' : title,
@@ -189,8 +185,8 @@ def tweet_parse():
 							date=item.pubdate.string
 							# print(item.link.string)
 							link=item.link.string
-							author=item.findAll('dc:creator')
-							# print(author[0].string)
+							author=item.findAll('dc:creator').string
+							print(author)
 							tweet_counter +=1
 
 							data={'company':'snap', 'source':'Twitter', 'link' : str(item.link.string),
