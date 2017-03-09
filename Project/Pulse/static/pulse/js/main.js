@@ -185,15 +185,14 @@ $('.graphButton').on('click', function(){
 
 	if (this.value == 'Bar'){
 		this.value = 'Line'
-		$('.graphArea').addClass('barGraph')
-		$('.graphArea').removeClass('lineGraph')
+		$('.barGraph').css('display','block')
+		$('.lineGraph').css('display','none')
 	}
 
 	else if(this.value == 'Line'){
 		this.value = 'Bar'
-		$('.graphArea').addClass('lineGraph')
-		$('.graphArea').removeClass('barGraph')
-
+		$('.lineGraph').css('display','block')
+		$('.barGraph').css('display','none')
 	}
 	else{
 		this.value = "Damn it Wes!"
