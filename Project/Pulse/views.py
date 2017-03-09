@@ -163,7 +163,7 @@ def save_tweet_feed(request):
 			hit = Hit(
 				
 				company=obj['company'],
-				source='News',
+				source='Twitter',
 				link = obj['link'], 
 				author = obj['author'],
 				title = obj['title'],
