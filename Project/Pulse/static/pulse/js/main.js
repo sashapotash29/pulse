@@ -8,9 +8,10 @@ var bulk_info = $.ajax(
 			}
 		}
 )
- const tesla_info = bulk_info['result']['tesla']
- const coke_info = bulk_info['result']['coke']
- const snap_info = bulk_info['result']['snap']
+
+const tesla_info = bulk_info['result']['tesla']
+const coke_info = bulk_info['result']['coke']
+const snap_info = bulk_info['result']['snap']
 
 var unpack_for_line = function(ticker,stock_info){
 	var price_list = stock_info
