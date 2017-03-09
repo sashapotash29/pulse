@@ -76,7 +76,7 @@
 	padding:0;
 	vertical-align: center;
 	text-align: center;
-	bottom:10%;
+	width:100%;
 }
 
 .nav{
@@ -88,7 +88,7 @@
 }
 
 
-#logo{
+/*#logo{
 	background-color: #F8DD97;
 	height:100%;
 	margin:0;
@@ -97,7 +97,7 @@
 	text-align: center;
 	bottom:10%;
 
-}
+}*/
 
 .dropdownList{
 
@@ -225,6 +225,7 @@
 #mainTitle{
 	font-size: 6em;
 	height:100%;
+	width:100%;
 	margin:0;
 	padding:0;
 	text-align: center;
