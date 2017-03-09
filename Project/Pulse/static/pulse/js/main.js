@@ -22,6 +22,7 @@ var bulk_info = $.ajax(
 		}
 )
 
+
 // console.log(tesla_info)
 // function sleep(miliseconds) {
 //    var currentTime = new Date().getTime();
