@@ -6,22 +6,22 @@ var coke_info;
 var snap_info;
 
 var data;
-var bulk_info = $.ajax(
-		{
-			url: 'http://127.0.0.1:8000/graph',
-			method: 'GET',
-			success: function(result){
-				data = JSON.parse(result);
-				// console.log('data')
-				// console.log(data)
-				$('.loader').css('display','none')
-				tesla_info = data['result']['tesla']
-				coke_info = data['result']['coke']
-				snap_info = data['result']['snap']
-				// return data
-			}
-		}
-)
+// var bulk_info = $.ajax(
+// 		{
+// 			url: 'http://127.0.0.1:8000/graph',
+// 			method: 'GET',
+// 			success: function(result){
+// 				data = JSON.parse(result);
+// 				// console.log('data')
+// 				// console.log(data)
+// 				$('.loader').css('display','none')
+// 				tesla_info = data['result']['tesla']
+// 				coke_info = data['result']['coke']
+// 				snap_info = data['result']['snap']
+// 				// return data
+// 			}
+// 		}
+// )
 
 
 // console.log(tesla_info)
@@ -63,11 +63,13 @@ require.config({
 
 
 // STATIC FUNCTIONS
+
 var make_bar_graph = function(){
+	console.log("making BAR graph")
 	require(["d3", "c3"], function(d3, c3) {
 
 		var chart = c3.generate({
-			bindto: '.graphArea',
+			bindto: '.barGraph',
 	    	data: {
 	        	columns: [
 	            	['stock_price', 30, 200, 100, 400, 150, 250,1000],
@@ -90,6 +92,7 @@ var make_bar_graph = function(){
 // price count date
 
 var make_line_graph = function(ticker, stock_info){
+	console.log("making LINE graph")
 	const stock_data = stock_info[0]
 	console.log(stock_data)
 	const price_list = [ticker].concat(stock_data['price_list'])
@@ -101,7 +104,7 @@ var make_line_graph = function(ticker, stock_info){
 
 	require(["d3", "c3"], function(d3, c3){
 		var chart = c3.generate({
-			bindto:'.graphArea',
+			bindto:'.lineGraph',
     		data: {
         		x: 'x',
         		columns: [date_list,
@@ -144,27 +147,63 @@ var make_line_graph = function(ticker, stock_info){
 };
 
 
-document.getElementById('tsla').addEventListener('click', function(e){
-	e.preventDefault()
+// ADDING EVENT LISTENERS
 
+
+$('#tsla').on('click', function(){
+	$('#loadingMessage').css('display', 'none')
 	console.log('clicked')
 
 	make_line_graph('TSLA', tesla_info)
 
 });
-document.getElementById('ko').addEventListener('click', function(e){
-	e.preventDefault()
+
+$('#ko').on('click', function(e){
+	$('#loadingMessage').css('display', 'none')
 	console.log('clicked')
 
 	make_line_graph('KO', coke_info)
 
 });
-document.getElementById('snap').addEventListener('click', function(e){
-	e.preventDefault()
+
+$('#snap').on('click', function(e){
+	$('#loadingMessage').css('display', 'none')
 	console.log('clicked')
 
+	
 	make_line_graph('SNAP', snap_info)
+	
+	
+	make_bar_graph('SNAP', snap_info)
+	
+	
 
 });
+
+$('.graphButton').on('click', function(){
+	console.log(this.value)
+
+	if (this.value == 'Bar'){
+		this.value = 'Line'
+		$('.graphArea').addClass('barGraph')
+		$('.graphArea').removeClass('lineGraph')
+	}
+
+	else if(this.value == 'Line'){
+		this.value = 'Bar'
+		$('.graphArea').addClass('lineGraph')
+		$('.graphArea').removeClass('barGraph')
+
+	}
+	else{
+		this.value = "Damn it Wes!"
+
+	}
+
+
+
+
+});
+
 
 

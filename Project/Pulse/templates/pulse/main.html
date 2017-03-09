@@ -27,11 +27,8 @@
 
 						<div class="dropdown-menu ddg" aria-labelledby="dropdownMenuLink">
 							<ul class="dropdownList">
-								<li id='lineOption' class="graphOption">
-									<input type="submit" class="dropdown-item graphButton" href="#" value="Line">
-								</li>
 								<li id="barOption" class="graphOption">
-									<input type="submit" class="dropdown-item graphButton" href="#" value="Bar">
+									<input type="submit" class="dropdown-item graphButton" value="Bar">
 								</li>
 							</ul>
 						</div>
@@ -51,17 +48,32 @@
 
 	  	<div class="row middle">
 		    	<div class="col-sm-9 center">
-			    	<div class="graphArea">
+			    	<div class="graphArea lineGraph">
+			    		<h2 id="loadingMessage"> Welcome to Pulse. Please click a company below to get started! </h2>
 			    		<div class="loader"></div>
 			    	</div>
 		    	</div>
 			    <div class="col-sm-3 right">
-			    	<h2 class="socialHeader sideHeader"> List of Social Data </h2>
-			    	<ul class = "list socialInfo">
-			    		<li class="socialDetail"> TEST </li>
-			    		<li class="socialDetail"> TEST </li>
-			    		<li class="socialDetail"> TEST </li>
-			    		<li class="socialDetail"> TEST </li>
+			    	<ul class = "list newsInfo">
+			    		<h2 class="socialHeader sideHeader"> News </h2>
+			    		<li class="socialDetail"> Article </li>
+			    		<li class="socialDetail"> Article </li>
+			    		<li class="socialDetail"> Article </li>
+			    		<li class="socialDetail"> Article </li>
+			    	</ul>
+			    	<ul class = "list professionalsInfo">
+			    		<h2 class="socialHeader sideHeader"> Professional Activity </h2>
+			    		<li class="socialDetail"> Tweet </li>
+			    		<li class="socialDetail"> Tweet </li>
+			    		<li class="socialDetail"> Tweet </li>
+			    		<li class="socialDetail"> Tweet </li>
+			    	</ul>
+			    	<ul class = "list PeoplesInfo">
+			    		<h2 class="socialHeader sideHeader"> Public Activity </h2>
+			    		<li class="socialDetail"> Tweet </li>
+			    		<li class="socialDetail"> Tweet </li>
+			    		<li class="socialDetail"> Tweet </li>
+			    		<li class="socialDetail"> Tweet </li>
 			    	</ul>
 			    </div>	    
 		</div>
@@ -74,7 +86,7 @@
 						<input id="tsla" class="tsla bttn" value="Tesla, Inc. (TSLA)" type="submit">
 					</li>
 					<li class="liButton">
-						<input id="ko" class="bttn" value="The Coca-Cola Company (KO)" type="submit">>
+						<input id="ko" class="bttn" value="The Coca-Cola Company (KO)" type="submit">
 					</li>
 					<li class="liButton">
 						<input id = "snap" class="bttn" value="Snap Inc. (SNAP)" type="submit">
