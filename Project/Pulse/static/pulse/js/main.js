@@ -66,7 +66,9 @@ var make_bar_graph = function(stock_info){
 	            		price_list,
         				count_list
         		],
-	        	type: 'bar'
+
+	        	type: 'bar',
+	        	onclick: function(e){side_bar(e)}
 	    	},
 	   		bar: {
 	        	width: {
@@ -82,12 +84,12 @@ var make_bar_graph = function(stock_info){
 // price count date
 
 var make_line_graph = function(stock_info){
-	console.log("making LINE graph")
+	// console.log("making LINE graph")
 	const stock_data = stock_info[0]
-	console.log(stock_info)
+	// console.log(stock_info)
 	const ticker = stock_info[0]['company']
 	const price_list = [ticker].concat(stock_data['price_list'])
-	console.log(price_list)
+	// console.log(price_list)
 	const count_list = ['Activity'].concat(stock_info[1])
 	const orig_date_list = stock_info[2]
 	const date_list = ['x'].concat(stock_info[2])
@@ -145,7 +147,7 @@ var make_line_graph = function(stock_info){
 $('#tsla').on('click', function(){
 	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
-	console.log('clicked')
+	// console.log('clicked')
 	var tesla = $(this)
 	tesla.addClass('active')
 	$('#ko').removeClass('active')
@@ -157,7 +159,7 @@ $('#tsla').on('click', function(){
 $('#ko').on('click', function(e){
 	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
-	console.log('clicked')
+	// console.log('clicked')
 	$(this).addClass('active')
 	$('#snap').removeClass('active')
 	$('#tsla').removeClass('active')
@@ -168,7 +170,7 @@ $('#ko').on('click', function(e){
 $('#snap').on('click', function(e){
 	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
-	console.log('clicked')
+	// console.log('clicked')
 	$(this).addClass('active')
 	$('#ko').removeClass('active')
 	$('#tsla').removeClass('active')
@@ -260,7 +262,7 @@ var side_bar=function(e){
 	var date= e.x
 	console.log(company)
 	console.log(date)
-	console.log(this)
+	// console.log(this)
 	$('.newsLoader').css('display','block')
 	$('.tweetsLoader').css('display','block')
 	$.ajax(
@@ -268,48 +270,77 @@ var side_bar=function(e){
 			url: 'http://127.0.0.1:8000/media',
 			data: {'company':company, 'date':date},
 			method: 'GET',
-			dataType: 'application/json',
+			// dataType: 'application/json',
 			success: function(result){
 				$('.newsLoader').css('display','none')
+				$('.tweetsLoader').css('display','none')
 				data = JSON.parse(result);
-				const news_ul = $('.newsInfo')
-				const news = data['news']
-				for(i=0; i++; i <= news.length){
-					const news_li = $('<li>')
-					news_li.addClass('newsLi')
-					// TARGET THE CONTENT NOT EVERYTHING
-					const content = news[i]
-					const author = news[i]
-					news_li.append(content + ' written by: ' + author)
-					const linkTag = $('<a>')
-					// WHERE IS THE LINK IN THE OBJ
-					const link = news[i]
-					linkTag.attr('href', link)
-					linkTag.attr('value', 'Link to Tweet')
-					linkTag.attr('target', '_blank')
-					news_li.append(linkTag)
+				console.log('....................data')
+				console.log(data)
+				var news_ul = $('.newsInfo');
+				news_ul.empty()
+				var news = data['news'];
+				console.log('news');
+				if (news.length == 0){
+					var news_li = $('<li>Sorry no News Activity for this Day</li>')
+					news_li.addClass('tweetsLi')
+					// TARGET THE CONTENT NOT EVERYTHING?
 					news_ul.append(news_li)
-	
+				}
+				else{
+					for(var i=0; i <= news.length-1;i++){
+						
+						console.log('forloop news')
+						var news_li = $('<li></li>')
+						news_li.addClass('newsLi')
+						// TARGET THE CONTENT NOT EVERYTHING
+						var content = news[i]['title']
+						console.log(content)
+						var author = news[i]['author']
+						console.log(author)
+						news_li.append(content + ' written by: ' + author)
+						var linkTag = $('<a></a>')
+						// WHERE IS THE LINK IN THE OBJ
+						var link = news[i]['link']
+						linkTag.attr('href', link)
+						linkTag.attr('value', 'Link to Tweet')
+						linkTag.attr('target', '_blank')
+						news_li.append(linkTag)
+						news_ul.append(news_li)
+		
+					}
 				}
 				// FIRST 'FOR LOOP' FOR NEWS ENDS
-				$('.tweetsLoader').css('display','none')
-				const professional_ul = $('.professionalsInfo')
-				const tweets = data['tweets']
-				for (i=0; i++; i <= tweets.length){
-					const tweets_li = $('<li>')
+				
+				var professional_ul = $('.professionalsInfo')
+				professional_ul.empty()
+				var tweets = data['tweets']
+				if (tweets.length == 0){
+					var tweets_li = $('<li></li>')
+					tweets_li.text('Sorry No Tweets Available For This Day')
 					tweets_li.addClass('tweetsLi')
 					// TARGET THE CONTENT NOT EVERYTHING?
-					const content = tweets[i]
-					const author = tweets[i]
-					tweets_li.append(content + ' written by: ' + author)
-					const linkTag = $('<a>')
-					// WHERE IS THE LINK IN THE OBJ?
-					const link = tweets[i]
-					linkTag.attr('href', link)
-					linkTag.attr('value', 'Link to News Article')
-					linkTag.attr('target', '_blank')
-					tweets_li.append(linkTag)
+					
+					// tweets_li.append(linkTag)
 					professional_ul.append(tweets_li)
+				}
+				else{
+					for (i=0; i <= tweets.length-1; i++){
+						var tweets_li = $('<li></li>')
+						tweets_li.addClass('tweetsLi')
+						// TARGET THE CONTENT NOT EVERYTHING?
+						var content = tweets[i]['content']
+						var author = tweets[i]['author']
+						tweets_li.append(content + ' written by: ' + author)
+						var linkTag = $('<a></a>')
+						// WHERE IS THE LINK IN THE OBJ?
+						var link = tweets[i]['link']
+						linkTag.attr('href', link)
+						linkTag.attr('value', 'Link to News Article')
+						linkTag.attr('target', '_blank')
+						tweets_li.append(linkTag)
+						professional_ul.append(tweets_li)
+					}
 				}
 				// SECOND 'FOR LOOP' FOR TWEETS ENDS
 			}
@@ -321,20 +352,20 @@ var side_bar=function(e){
 
 
 
-var bulk_info = $.ajax(
-		{
-			url: 'http://127.0.0.1:8000/graph',
-			method: 'GET',
-			success: function(result){
-				$('.loader').css('display','none')
-				data = JSON.parse(result);
-				// console.log('data')
-				// console.log(data)
-				$('.loader').css('display','none')
-				tesla_info = data['result']['tesla']
-				coke_info = data['result']['coke']
-				snap_info = data['result']['snap']
-				// return data
-			}
-		}
-)
+// var bulk_info = $.ajax(
+// 		{
+// 			url: 'http://127.0.0.1:8000/graph',
+// 			method: 'GET',
+// 			success: function(result){
+// 				$('.loader').css('display','none')
+// 				data = JSON.parse(result);
+// 				// console.log('data')
+// 				// console.log(data)
+// 				$('.loader').css('display','none')
+// 				tesla_info = data['result']['tesla']
+// 				coke_info = data['result']['coke']
+// 				snap_info = data['result']['snap']
+// 				// return data
+// 			}
+// 		}
+// )

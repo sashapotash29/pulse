@@ -209,19 +209,29 @@ def date_examples(request):
 	
 	news_obj_list =[]
 	twit_obj_list =[]
-	obj_news={}
-	obj_twit={}
+	
+	
 	fin_obj={}
-	for hit in hits_news:
+	print('news hits')
+	print(news_hit[0:5])
+
+	for hit in news_hit:
+		obj_news={}
 		obj_news['company']=hit.company
 		obj_news['source']=hit.source
 		obj_news['link']=hit.link
 		obj_news['author']=hit.author
 		obj_news['title']=hit.title
+		
 		obj_news['content']=hit.content
 		news_obj_list.append(obj_news)
+		# print(obj_news)
 
-	for hit in hits_twit:
+	print('news hits')
+	print(twit_hit)
+
+	for hit in twit_hit:
+		obj_twit={}
 		obj_twit['content']=hit.content
 		obj_twit['title']=hit.title
 		obj_twit['author']=hit.author
@@ -230,7 +240,7 @@ def date_examples(request):
 		obj_twit['company']=hit.company
 		twit_obj_list.append(obj_twit)
 
-	# print(obj_list)
+	print(news_obj_list)
 	fin_obj['news']=news_obj_list
 	fin_obj['tweets']=twit_obj_list
 	return HttpResponse(json.dumps(fin_obj))
