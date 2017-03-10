@@ -255,24 +255,69 @@ var check = function(){
 }
 
 var side_bar=function(e){
-	console.log(e.x)
-	// console.log(e.id)
-	var company = $('.active')[0].id
 	
-	var date=
+	var company = $('.active')[0].id
+	var date= e.x
+	console.log(company)
+	console.log(date)
 	console.log(this)
+	$('.newsLoader').css('display','block')
+	$('.tweetsLoader').css('display','block')
 	$.ajax(
 		{
 			url: 'http://127.0.0.1:8000/media/'+company+'&'+date,
 			method: 'GET',
 			success: function(result){
+				$('.newsLoader').css('display','none')
 				data = JSON.parse(result);
+				const news_ul = $('.newsInfo')
+				const news = data['news']
+				for(i=0; i++; i <= news.length){
+					const news_li = $('<li>')
+					news_li.addClass('newsLi')
+					// TARGET THE CONTENT NOT EVERYTHING
+					const content = news[i]
+					const author = news[i]
+					news_li.append(content + ' written by: ' + author)
+					const linkTag = $('<a>')
+					// WHERE IS THE LINK IN THE OBJ
+					const link = news[i]
+					linkTag.attr('href', link)
+					linkTag.attr('value', 'Link to Tweet')
+					linkTag.attr('target', '_blank')
+					news_li.append(linkTag)
+					news_ul.append(news_li)
+	
+				}
+				// FIRST 'FOR LOOP' FOR NEWS ENDS
+				$('.tweetsLoader').css('display','none')
+				const professional_ul = $('.professionalsInfo')
+				const tweets = data['tweets']
+				for (i=0; i++; i <= tweets.length){
+					const tweets_li = $('<li>')
+					tweets_li.addClass('tweetsLi')
+					// TARGET THE CONTENT NOT EVERYTHING?
+					const content = tweets[i]
+					const author = tweets[i]
+					tweets_li.append(content + ' written by: ' + author)
+					const linkTag = $('<a>')
+					// WHERE IS THE LINK IN THE OBJ?
+					const link = tweets[i]
+					linkTag.attr('href', link)
+					linkTag.attr('value', 'Link to News Article')
+					linkTag.attr('target', '_blank')
+					tweets_li.append(linkTag)
+					professional_ul.append(tweets_li)
+				}
+				// SECOND 'FOR LOOP' FOR TWEETS ENDS
 			}
+
+		}
 		}
 	
 	)
 
-}
+};
 
 
 
@@ -282,6 +327,7 @@ var bulk_info = $.ajax(
 			url: 'http://127.0.0.1:8000/graph',
 			method: 'GET',
 			success: function(result){
+				$('.loader').css('display','none')
 				data = JSON.parse(result);
 				// console.log('data')
 				// console.log(data)
