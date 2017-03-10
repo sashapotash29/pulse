@@ -314,7 +314,13 @@ var side_bar=function(e){
 				// SECOND 'FOR LOOP' FOR TWEETS ENDS
 			}
 
+<<<<<<< HEAD
+		})
 		}
+	
+=======
+		}
+>>>>>>> 682abed78b3b87ef74ca3c6046fda83489c6761e
 	)
 };
 
@@ -337,4 +343,4 @@ var bulk_info = $.ajax(
 				// return data
 			}
 		}
-)
+);
