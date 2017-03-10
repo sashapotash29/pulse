@@ -22,7 +22,7 @@ def home(request):
 ################
 
 def graphs(request):
-	print('graphsssss')
+	# print('graphsssss')
 	# print(today)
 	# today=date.today()
 	tesla_stock_data = make_stock_list('TSLA') 
@@ -72,18 +72,18 @@ def graphs(request):
 
 def date_counter(name, date_list):
 	count_list=[]
-	print('[[[[[[[[[[[[[]]]]]]]]]]]]]')
-	print(date_list)
+	# print('[[[[[[[[[[[[[]]]]]]]]]]]]]')
+	# print(date_list)
 	for date in date_list:
-		print('dateeeeeeeeeeeeeeeeeeeeeeeeeeee')
-		print(date)
+		# print('dateeeeeeeeeeeeeeeeeeeeeeeeeeee')
+		# print(date)
 		new_date = datetime.strptime(date, '%Y-%m-%d').date()
 		hits = Hit.objects.filter(company=name, date_pub__contains=new_date)
-		print('counter hits')
-		print(hits)
+		# print('counter hits')
+		# print(hits)
 		count_list.append(len(hits))
-		print('count list')
-		print(count_list)
+		# print('count list')
+		# print(count_list)
 	return count_list
 
 
@@ -111,8 +111,8 @@ def make_stock_list(tick):
 			"price_list": price_list,
 			"date_list": date_list
 	}
-	print('---------------------stock_product')
-	print(stock_product)
+	# print('---------------------stock_product')
+	# print(stock_product)
 	return stock_product
 
 
@@ -182,7 +182,55 @@ def save_tweet_feed(request):
 	return render(request, 'pulse/main.html',{})	
 
 
-def date_examples(request, data):
+def date_examples(request):
 	print('example')
-	print(request)
+	data=request.GET
 	print(data)
+	# split = data.split('&')
+	company=data['company']
+	if company == 'tsla':
+		company='tesla'
+	if company == 'ko':
+		company='cocacola'
+	if company == 'snap':
+		company='snap'
+	print(company)
+	date_len=len(data['date'])
+	date2=data['date'][4:date_len-11]
+	print(date2)
+	date =datetime.strptime(date2, '%b %d %Y %H:%M:%S %Z').date()
+	print(date)
+	hits_news = Hit.objects.filter(company=company, date_pub__contains=date, source='News')
+	hits_twit = Hit.objects.filter(company=company, date_pub__contains=date, source='Twitter')
+	news_hit = hits_news.reverse()
+	twit_hit = hits_twit.reverse()
+	# print(hits[0].date_pub)
+	# print(hits[4].date_pub)
+	
+	news_obj_list =[]
+	twit_obj_list =[]
+	obj_news={}
+	obj_twit={}
+	fin_obj={}
+	for hit in hits_news:
+		obj_news['company']=hit.company
+		obj_news['source']=hit.source
+		obj_news['link']=hit.link
+		obj_news['author']=hit.author
+		obj_news['title']=hit.title
+		obj_news['content']=hit.content
+		news_obj_list.append(obj_news)
+
+	for hit in hits_twit:
+		obj_twit['content']=hit.content
+		obj_twit['title']=hit.title
+		obj_twit['author']=hit.author
+		obj_twit['link']=hit.link
+		obj_twit['source']=hit.source
+		obj_twit['company']=hit.company
+		twit_obj_list.append(obj_twit)
+
+	# print(obj_list)
+	fin_obj['news']=news_obj_list
+	fin_obj['tweets']=twit_obj_list
+	return HttpResponse(json.dumps(fin_obj))
