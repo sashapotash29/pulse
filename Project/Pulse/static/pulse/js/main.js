@@ -216,26 +216,27 @@ var specialElementHandlers = {
     }
 };
 
-// $('#saveButton').on('click', function(){
-// 	console.log("Save has been clicked")
-// 	var doc = new jsPDF();
-// 	console.log('here')
-// 	var specialElementHandlers = {
-//     	'#editor': function (element, renderer) {
-//         return true;
-//     	}
-// 	};
-// 	console.log('here')
-// 	doc.addHTML($('.middle'), {
-// 		width: 200,
-// 		'elementHandlers': specialElementHandlers
-// 		}
+$('#saveButton').on('click', function(){
+	console.log("Save has been clicked")
+	var picture = $('.middle')
+	var dataURL = picture.toDataURL();
+	var doc = new jsPDF();
+	console.log('here')
+	// var specialElementHandlers = {
+ //    	'#editor': function (element, renderer) {
+ //        return true;
+ //    	}
+	// };
+	console.log('here')
+	doc.fromHTML($('.graphArea').html(), 15, 15, {
+		width: 200,
+		'elementHandlers': specialElementHandlers
+	});
+	doc.addImage(dataURL,'JPEG',0,0)
+	doc.save('PulseSample.pdf');
 
+});
 
-// 	);
-// 	doc.save('example.pdf')
-
-// });
 
 var check = function(){
 	var active=$('.active');
@@ -255,7 +256,40 @@ var check = function(){
 
 var side_bar=function(e){
 	console.log(e.x)
-	// console.log(this)
+	// console.log(e.id)
+	var company = $('.active')[0].id
+	
+	var date=
+	console.log(this)
+	$.ajax(
+		{
+			url: 'http://127.0.0.1:8000/media/'+company+'&'+date,
+			method: 'GET',
+			success: function(result){
+				data = JSON.parse(result);
+			}
+		}
+	
+	)
+
 }
 
 
+
+
+var bulk_info = $.ajax(
+		{
+			url: 'http://127.0.0.1:8000/graph',
+			method: 'GET',
+			success: function(result){
+				data = JSON.parse(result);
+				// console.log('data')
+				// console.log(data)
+				$('.loader').css('display','none')
+				tesla_info = data['result']['tesla']
+				coke_info = data['result']['coke']
+				snap_info = data['result']['snap']
+				// return data
+			}
+		}
+)
