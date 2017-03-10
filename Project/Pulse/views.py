@@ -180,3 +180,9 @@ def save_tweet_feed(request):
 
 
 	return render(request, 'pulse/main.html',{})	
+
+
+def date_examples(request, data):
+	print('example')
+	print(request)
+	print(data)
