@@ -24,23 +24,6 @@ var bulk_info = $.ajax(
 )
 
 
-// console.log(tesla_info)
-// function sleep(miliseconds) {
-//    var currentTime = new Date().getTime();
-
-//    while (currentTime + miliseconds >= new Date().getTime()) {
-//    }
-// }
-
-// console.log('data');
-// console.log(data);
-
-
-// sleep(5000)
-// console.log('bulk_info')
-// console.log(bulk_info.responseText)
-
-
 
 
 var unpack_for_line = function(ticker,stock_info){
@@ -225,6 +208,33 @@ $('.graphButton').on('click', function(){
 
 
 });
+// CODE FROM RESOURCE
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#saveButton').on('click', function(){
+	console.log("Save has been clicked")
+	var doc = new jsPDF();
+	console.log('here')
+	var specialElementHandlers = {
+    	'#editor': function (element, renderer) {
+        return true;
+    	}
+	};
+	console.log('here')
+	doc.fromHTML($('.middle').html(), 15, 15, {
+		width: 200,
+		'elementHandlers': specialElementHandlers
+		}
+
+
+	)}
+
+);
 
 var check = function(){
 	var active=$('.active');
@@ -246,3 +256,5 @@ var side_bar=function(e){
 	console.log(e.x)
 	// console.log(this)
 }
+
+
