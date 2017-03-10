@@ -312,7 +312,7 @@ var side_bar=function(e){
 				// SECOND 'FOR LOOP' FOR TWEETS ENDS
 			}
 
-		}
+		})
 		}
 	
 	)
@@ -338,4 +338,4 @@ var bulk_info = $.ajax(
 				// return data
 			}
 		}
-)
+);
