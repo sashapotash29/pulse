@@ -102,7 +102,7 @@ def tweet_parse():
 		 'RiskReversal', 'InterestArb', 'mark_dow', 'auaurelija', 'MarketPlunger', 'barnejek', 
 		 'ericjackson', 'brianmlucey', 'fwred', 'muddywatersre', 'groditi', 'kiffmeister', 
 		 'Fullcarry', 'mbusigin', 'prchovanec', 'michaelkitces','BI_Advertising', 'Stalingrad_Poor',
-		  'MrScottEddy', 'FoxBusiness','businessinsider', 'markets', 'elonmusk']
+		  'MrScottEddy', 'FoxBusiness','businessinsider', 'markets', 'elonmusk','pulseisgood']
 		data_list=[]
 		final_obj={}
 		z=0
@@ -153,7 +153,7 @@ def tweet_parse():
 							date=item.pubdate.string
 							# print(item.link.string)
 							link=item.link.string
-							author=item.findAll('dc:creator').string
+							author=item.find('dc:creator').string
 							print(author)
 							tweet_counter +=1
 							# print(item.link.string)
@@ -170,7 +170,7 @@ def tweet_parse():
 							date=item.pubdate.string
 							# print(item.link.string)
 							link=item.link.string
-							author=item.findAll('dc:creator').string
+							author=item.find('dc:creator').string
 							print(author)
 							tweet_counter +=1
 							data={'company':'cocacola', 'source':'Twitter', 'link' : str(item.link.string),
@@ -185,7 +185,7 @@ def tweet_parse():
 							date=item.pubdate.string
 							# print(item.link.string)
 							link=item.link.string
-							author=item.findAll('dc:creator').string
+							author=item.find('dc:creator').string
 							print(author)
 							tweet_counter +=1
 
