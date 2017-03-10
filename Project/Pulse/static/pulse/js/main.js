@@ -215,6 +215,7 @@ var specialElementHandlers = {
         return true;
     }
 };
+
 $('#saveButton').on('click', function(){
 	console.log("Save has been clicked")
 	var picture = $('.middle')
@@ -235,6 +236,7 @@ $('#saveButton').on('click', function(){
 	doc.save('PulseSample.pdf');
 
 });
+
 
 var check = function(){
 	var active=$('.active');
