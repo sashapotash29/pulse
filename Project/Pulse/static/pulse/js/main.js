@@ -265,8 +265,10 @@ var side_bar=function(e){
 	$('.tweetsLoader').css('display','block')
 	$.ajax(
 		{
-			url: 'http://127.0.0.1:8000/media/'+company+'&'+date,
+			url: 'http://127.0.0.1:8000/media',
+			data: {'company':company, 'date':date},
 			method: 'GET',
+			dataType: 'application/json',
 			success: function(result){
 				$('.newsLoader').css('display','none')
 				data = JSON.parse(result);
@@ -313,10 +315,7 @@ var side_bar=function(e){
 			}
 
 		}
-		}
-	
 	)
-
 };
 
 
