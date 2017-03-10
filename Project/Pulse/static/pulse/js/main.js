@@ -216,25 +216,26 @@ var specialElementHandlers = {
     }
 };
 
-$('#saveButton').on('click', function(){
-	console.log("Save has been clicked")
-	var doc = new jsPDF();
-	console.log('here')
-	var specialElementHandlers = {
-    	'#editor': function (element, renderer) {
-        return true;
-    	}
-	};
-	console.log('here')
-	doc.fromHTML($('.middle').html(), 15, 15, {
-		width: 200,
-		'elementHandlers': specialElementHandlers
-		}
+// $('#saveButton').on('click', function(){
+// 	console.log("Save has been clicked")
+// 	var doc = new jsPDF();
+// 	console.log('here')
+// 	var specialElementHandlers = {
+//     	'#editor': function (element, renderer) {
+//         return true;
+//     	}
+// 	};
+// 	console.log('here')
+// 	doc.addHTML($('.middle'), {
+// 		width: 200,
+// 		'elementHandlers': specialElementHandlers
+// 		}
 
 
-	)}
+// 	);
+// 	doc.save('example.pdf')
 
-);
+// });
 
 var check = function(){
 	var active=$('.active');
