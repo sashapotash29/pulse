@@ -1,4 +1,22 @@
+body{
+	background-color: white;
+}
+
+.topSpace{
+
+	background-color:#333533;
+
+}
+
+
+
 /*LOADER*/
+
+.space{
+	background:#F5F3F0;
+}
+
+
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -92,9 +110,11 @@
 }
 
 .top{
-	background-color: beige;
+/*	background-color: beige;*/
 	text-align: center;
 	height: 10%;
+	width:100;
+	margin:0;
 	
 
 
@@ -103,7 +123,7 @@
 .bottom{
 
 	height: 5%;
-	background-color: black;
+	background-color: #333533;
 
 }
 
@@ -111,8 +131,8 @@
 	height:100%;
 	margin:0;
 	padding:0;
-	vertical-align: center;
-	text-align: center;
+	/*vertical-align: center;*/
+	text-align: left;
 	width:100%;
 }
 
@@ -152,6 +172,9 @@
 	height:100%;
 	margin:0;
 	padding:0;
+	width:20em;
+	vertical-align: bottom
+
 
 }
 
@@ -196,8 +219,9 @@
  	margin:0;
 	padding:0;
 	font-size: 2em;
-	border: none;
-	background-color: black;
+	border-radius: 10px;
+	background-color: white;
+	color:darkblue;
 
 
 }
@@ -211,8 +235,8 @@
 	padding:0;
 	font-size: 2em;
 	border: dashed black;
-	color:black;
-	background-color: white;
+	color:lightblue;
+	background-color: darkblue;
 
 }
 
@@ -265,8 +289,11 @@
 	width:100%;
 	margin:0;
 	padding:0;
-	text-align: center;
+	text-align: left;
 	vertical-align: center;
+	background-color: #333533;
+	color: white;
+	padding-left: .5em;
 
 
 }
@@ -278,6 +305,7 @@
 	margin: 0;
 	padding:0;
 	height: 2%;
+	width:100%;
 
 
 }
@@ -288,7 +316,12 @@
 
 /*	border: dashed pink;*/
 	height:100%;
-	background-color: #CFDBD5;
+	background-color: white;
+	padding: 0;
+	margin:0;
+	/*margin-left: .3em;*/
+	border-left-width: .01em;
+	border-left: lightblue solid;
 }
 
 
@@ -310,19 +343,25 @@
 /*BOTTOM*/
 
 .ulButton{
-	display: flex;
+	
 	padding:0;
 	margin:0;
+	height:100%;
 	justify-content: center;
+
+
+
 
 
 }
 
 .liButton{
-	width:50%;
+	width:100%;
 	list-style: none;
 	font-size: 2em;
-	margin:1%;
+	margin:0;
+	height: 50%;
+	padding:0;
 
 
 }
@@ -331,6 +370,9 @@
 	width: 100%;
 	font-size: 2rem;
 	text-align: center;
+	margin:0;
+	padding: 0;
+	height:100%;
 
 
 
@@ -392,6 +434,11 @@
 
 }
 
+.middleTop{
+	vertical-align: center;
+	display:none;
+}
+
 .button {
     background-color: #333533; /* Green */
     border: none;
@@ -405,12 +452,27 @@
 
 }
 
+.graphToggle{
+	vertical-align: center;
+	margin-top: .5em;
+	height:100%;
+	width:10em;
+}
+
+
 .innerNavDiv{
-	background-color: #333533;
+	background-color: white;
+	border-color: #333533;
+	border-style: outset;
+	border-radius: 10px;
 	text-align: center;
 	margin:auto;
-	height:100%;
+	height:70%;
 	padding:0;
+	/*margin-left: .5em;*/
+	margin-right: .5em;
+
+
 
 }
 
@@ -434,7 +496,16 @@
 .middle{
 /*	border: dashed blue;*/
 	background-color: beige;
-	height: 60em;
+	height: 80em;
 
 
+}
+
+
+.graphTitle{
+	background: white;
+	margin: 0;
+	padding:0;
+	height:100%;
+	width:70%;
 }
