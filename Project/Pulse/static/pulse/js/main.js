@@ -49,24 +49,26 @@ require.config({
 
 var make_bar_graph = function(stock_info){
 	console.log("making BAR graph")
-	const stock_data = stock_info[0]
-	const ticker = stock_info[0]['company']
-	const count_list = ['Activity'].concat(stock_info[1])
-	const price_list = [ticker].concat(stock_data['price_list'])
-	const date_list = ['x'].concat(stock_info[2])
-
+	var stock_data = stock_info[0]
+	var ticker = stock_info[0]['company']
+	var count_list = ['Activity'].concat(stock_info[1])
+	var price_list = [ticker].concat(stock_data['price_list'])
+	var orig_date_list = stock_info[2]
+	var date_list = ['x'].concat(stock_info[2])
+	console.log(date_list)
 	require(["d3", "c3"], function(d3, c3) {
 
 		var chart = c3.generate({
 			bindto: '.graphArea',
 	    	data: {
-
-	        	columns: [
-	            		// date_list,
-	            		price_list,
+				x: 'x',
+        		columns: [date_list,
+        				price_list,
         				count_list
         		],
-
+        		axes:{
+        			'Activity': 'y2'
+        		},
 	        	type: 'bar',
 	        	onclick: function(e){side_bar(e)}
 	    	},
@@ -75,7 +77,34 @@ var make_bar_graph = function(stock_info){
 	            	ratio: 0.3 // this makes bar width 50% of length between ticks
 	        	}
 
-	    	}
+	    	},
+	    	axis: {
+    			y:{
+    				label: {
+    					text: "Price (in $USD)",
+    					position: 'inner-middle'
+    				}
+    			},
+
+    			y2:{
+    				show: true,
+    				label: {
+    					text: "Activity",
+    					position: 'inner-middle'
+
+    				}
+
+    			},
+
+    			x:{
+    				type:'timeseries',
+    				tick:{values : orig_date_list}
+
+
+
+    			}
+
+    		}
 		});
 	});
 
@@ -85,15 +114,15 @@ var make_bar_graph = function(stock_info){
 
 var make_line_graph = function(stock_info){
 	// console.log("making LINE graph")
-	const stock_data = stock_info[0]
+	var stock_data = stock_info[0]
 	// console.log(stock_info)
-	const ticker = stock_info[0]['company']
-	const price_list = [ticker].concat(stock_data['price_list'])
+	var ticker = stock_info[0]['company']
+	var price_list = [ticker].concat(stock_data['price_list'])
 	// console.log(price_list)
-	const count_list = ['Activity'].concat(stock_info[1])
-	const orig_date_list = stock_info[2]
-	const date_list = ['x'].concat(stock_info[2])
-	// const columns = [price_list,count_list, date_list]
+	var count_list = ['Activity'].concat(stock_info[1])
+	var orig_date_list = stock_info[2]
+	var date_list = ['x'].concat(stock_info[2])
+	// var columns = [price_list,count_list, date_list]
 
 	require(["d3", "c3"], function(d3, c3){
 		var chart = c3.generate({
@@ -113,7 +142,7 @@ var make_line_graph = function(stock_info){
     			y:{
     				label: {
     					text: "Price (in $USD)",
-    					position: 'outer-middle'
+    					position: 'inner-middle'
     				}
     			},
 
@@ -148,6 +177,8 @@ $('#tsla').on('click', function(){
 	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
 	// console.log('clicked')
+	$('.middleTop').css('display','block')
+	$('.graphTitle h1').text(this.value)
 	var tesla = $(this)
 	tesla.addClass('active')
 	$('#ko').removeClass('active')
@@ -160,6 +191,8 @@ $('#ko').on('click', function(e){
 	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
 	// console.log('clicked')
+	$('.graphTitle h1').text(this.value)
+	$('.middleTop').css('display','block')
 	$(this).addClass('active')
 	$('#snap').removeClass('active')
 	$('#tsla').removeClass('active')
@@ -171,6 +204,8 @@ $('#snap').on('click', function(e){
 	$('.graphButton').val('Bar');
 	$('#loadingMessage').css('display', 'none')
 	// console.log('clicked')
+	$('.graphTitle h1').text(this.value)
+	$('.middleTop').css('display','block')
 	$(this).addClass('active')
 	$('#ko').removeClass('active')
 	$('#tsla').removeClass('active')
@@ -348,24 +383,3 @@ var side_bar=function(e){
 		}
 	)
 };
-
-
-
-
-// var bulk_info = $.ajax(
-// 		{
-// 			url: 'http://127.0.0.1:8000/graph',
-// 			method: 'GET',
-// 			success: function(result){
-// 				$('.loader').css('display','none')
-// 				data = JSON.parse(result);
-// 				// console.log('data')
-// 				// console.log(data)
-// 				$('.loader').css('display','none')
-// 				tesla_info = data['result']['tesla']
-// 				coke_info = data['result']['coke']
-// 				snap_info = data['result']['snap']
-// 				// return data
-// 			}
-// 		}
-// )
