@@ -93,7 +93,7 @@ def make_stock_list(tick):
 	day = str(today.day)
 	month = str(today.month-1)
 	year = str(today.year)
-	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=2&b=7&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
+	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=1&b=10&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
 	s = requests.get(url).content
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
 	price_list = []
@@ -176,9 +176,6 @@ def save_tweet_feed(request):
 
 		# print(request.GET)
 		# print(data)
-	
-
-
 	return render(request, 'pulse/main.html',{})	
 
 
@@ -209,8 +206,6 @@ def date_examples(request):
 	
 	news_obj_list =[]
 	twit_obj_list =[]
-	
-	
 	fin_obj={}
 	print('news hits')
 	print(news_hit[0:5])
@@ -222,11 +217,9 @@ def date_examples(request):
 		obj_news['link']=hit.link
 		obj_news['author']=hit.author
 		obj_news['title']=hit.title
-		
 		obj_news['content']=hit.content
 		news_obj_list.append(obj_news)
 		# print(obj_news)
-
 	print('news hits')
 	print(twit_hit)
 
@@ -239,7 +232,6 @@ def date_examples(request):
 		obj_twit['source']=hit.source
 		obj_twit['company']=hit.company
 		twit_obj_list.append(obj_twit)
-
 	print(news_obj_list)
 	fin_obj['news']=news_obj_list
 	fin_obj['tweets']=twit_obj_list
