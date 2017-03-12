@@ -25,6 +25,7 @@ class Hit(models.Model):
 	source = models.CharField(max_length=50)
 	link = models.TextField()
 	author = models.CharField(max_length=100)
+	source_type = models.CharField(max_length=15)
 	title = models.TextField()
 	content = models.TextField()
 	date_pub = models.DateTimeField()
