@@ -333,14 +333,17 @@ var side_bar=function(e){
 						console.log(content)
 						var author = news[i]['author']
 						console.log(author)
-						news_li.append(content + ' written by: ' + author)
 						var linkTag = $('<a></a>')
+						var p_tag = $('<p></p>')
+						p_tag.append('written by: ' + author)
+						linkTag.append(content)
 						// WHERE IS THE LINK IN THE OBJ
 						var link = news[i]['link']
 						linkTag.attr('href', link)
 						linkTag.attr('value', 'Link to Tweet')
 						linkTag.attr('target', '_blank')
 						news_li.append(linkTag)
+						news_li.append(p_tag)
 						news_ul.append(news_li)
 		
 					}
@@ -366,14 +369,17 @@ var side_bar=function(e){
 						// TARGET THE CONTENT NOT EVERYTHING?
 						var content = tweets[i]['content']
 						var author = tweets[i]['author']
-						tweets_li.append(content + ' written by: ' + author)
 						var linkTag = $('<a></a>')
-						// WHERE IS THE LINK IN THE OBJ?
+						var p_tag = $('<p></p>')
+						p_tag.append('written by: ' + author)
+						linkTag.append(content)
+						
 						var link = tweets[i]['link']
 						linkTag.attr('href', link)
 						linkTag.attr('value', 'Link to News Article')
 						linkTag.attr('target', '_blank')
 						tweets_li.append(linkTag)
+						tweets_li.append(p_tag)
 						professional_ul.append(tweets_li)
 					}
 				}
