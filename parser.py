@@ -59,7 +59,8 @@ def news_parse():
 			    	soup_title = item.title.string
 			    	title_list = soup_title.split(' - ')
 			    	list_len = len(title_list)
-			    	title = title_list[0]
+			    	titles = title_list[0]
+			    	title = titles.replace("&apos;","'")
 			    	author = title_list[list_len-1]
 			    	if list_len>2:
 			    		author = title_list[1] + ' ' + title_list[2]
@@ -68,7 +69,7 @@ def news_parse():
 			    	news_title = item.title.string
 			    	data={'company':name, 'source':'News', 'link' : str(item.link.string),
 			    	'author' : author, 'title' : title, 'content' : str(item.description.string),
-			    	'date_pub' : str(date_time_object), 'key_word' : name}
+			    	'date_pub' : str(date_time_object), 'key_word' : name, 'source_type':'professional'}
 			    	print(name + 'news found')
 			    	data_list.append(data)
 			    	# print(data_list)
@@ -145,7 +146,8 @@ def tweet_parse():
 						# if item.date_pub==0:
 					# 	pass
 					
-						title=item.title.string
+						titles=item.title.string
+						title=titles.replace("&apos;","'")
 						if 'Tesla' in title or 'tesla' in title: 
 							print('TESLA')
 							print(item.title.string)
@@ -160,7 +162,8 @@ def tweet_parse():
 
 							data={'company':'tesla', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : str(author), 'title' : title, 'content' : title,
-							'date_pub' : str(date_time_object), 'key_word' : 'Tesla, tesla'}
+							'date_pub' : str(date_time_object), 'key_word' : 'Tesla, tesla', 
+							'source_type': 'professional'}
 							print('tesla hit found')
 							data_list.append(data)
 						if 'coke' in title or 'coca' in title or 'Coca' in title:
@@ -175,7 +178,8 @@ def tweet_parse():
 							tweet_counter +=1
 							data={'company':'cocacola', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : str(author), 'title' : title, 'content' : title,
-							'date_pub' : str(date_time_object), 'key_word' : 'Coke, coca, Coca'}
+							'date_pub' : str(date_time_object), 'key_word' : 'Coke, coca, Coca',
+							'source_type': 'professional'}
 							print('coke hit found')
 							data_list.append(data)
 						if 'Snap' in title or 'snap' in title:
@@ -191,7 +195,8 @@ def tweet_parse():
 
 							data={'company':'snap', 'source':'Twitter', 'link' : str(item.link.string),
 							'author' : str(author), 'title' : title, 'content' : title,
-							'date_pub' : str(date_time_object), 'key_word' : 'snap, Snap'}
+							'date_pub' : str(date_time_object), 'key_word' : 'snap, Snap',
+							'source_type': 'professional'}
 							print('snap hit found')
 							data_list.append(data)
 						else:

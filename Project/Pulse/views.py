@@ -24,27 +24,38 @@ def home(request):
 def graphs(request):
 	# print('graphsssss')
 	# print(today)
-	# today=date.today()
+	today=date.today()
+	print('--------------------today')
+	print(today)
+	start_day = '2017-03-8'
+	start=datetime.strptime(start_day, '%Y-%m-%d').date()
+	print(start)
+	num_days=(today-start).days
+	date_list = [str(today-timedelta(days=x)) for x in range(0,num_days)]
+	print(date_list)
+	
 	tesla_stock_data = make_stock_list('TSLA') 
-	tesla_date_list = tesla_stock_data['date_list']
+	# tesla_date_list = tesla_stock_data['date_list']
+	# print('\\\\\\\\\\\\\\\\tesla_date_list')
+	# print(tesla_date_list)
 	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
-	tesla_count_list=date_counter('tesla', tesla_date_list)
+	tesla_count_list=date_counter('tesla', date_list)
 	# tesla_obj = {'tesla':[tesla_stock_data, tesla_count_list, tesla_date_list]}
 	
 	coke_stock_data = make_stock_list('Ko') 
-	coke_date_list = coke_stock_data['date_list']
+	# coke_date_list = coke_stock_data['date_list']
 	# coke_hits = Hit.objects.filter(date_pub__contains=today)
 	# tesla_count=len(tesla_hits)
-	coke_count_list=date_counter('cocacola', coke_date_list)
+	coke_count_list=date_counter('cocacola', date_list)
 	# print(len(tesla_hits))
 	# coke_obj = {'cocacola':[coke_stock_data,coke_count_list,coke_date_list]}
 
 
 	snap_stock_data = make_stock_list('SNAP') 
-	snap_date_list = snap_stock_data['date_list']
+	# snap_date_list = snap_stock_data['date_list']
 	# snap_hits = Hit.objects.filter(date_pub__contains=today)
 	# tesla_count=len(tesla_hits)
-	snap_count_list=date_counter('cocacola', snap_date_list)
+	snap_count_list=date_counter('cocacola', date_list)
 	# print(len(tesla_hits))
 	# snap_obj = {'snap':[snap_stock_data,snap_count_list,snap_date_list]}
 
@@ -61,9 +72,9 @@ def graphs(request):
 	# snap_obj = {'snap':[snap_count,snap_stock_data]}
 	# print(hits.objects)
 	# print(hits)
-	inner_obj = {'tesla':[tesla_stock_data, tesla_count_list, tesla_date_list],
-				'coke': [coke_stock_data,coke_count_list,coke_date_list],
-				'snap': [snap_stock_data,snap_count_list,snap_date_list]
+	inner_obj = {'tesla':[tesla_stock_data, tesla_count_list, date_list],
+				'coke': [coke_stock_data,coke_count_list, date_list],
+				'snap': [snap_stock_data,snap_count_list, date_list]
 				}
 	final_obj = {'result':inner_obj}
 	# final_obj = json.dumps(final_obj)
@@ -93,7 +104,7 @@ def make_stock_list(tick):
 	day = str(today.day)
 	month = str(today.month-1)
 	year = str(today.year)
-	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=1&b=10&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
+	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=2&b=1&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
 	s = requests.get(url).content
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
 	price_list = []
@@ -232,7 +243,7 @@ def date_examples(request):
 		obj_twit['source']=hit.source
 		obj_twit['company']=hit.company
 		twit_obj_list.append(obj_twit)
-	print(news_obj_list)
+	# print(news_obj_list)
 	fin_obj['news']=news_obj_list
 	fin_obj['tweets']=twit_obj_list
 	return HttpResponse(json.dumps(fin_obj))
