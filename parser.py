@@ -90,6 +90,7 @@ def news_parse():
 @app.task
 def tweet_parse():
 	while True:
+		start_time = datetime.now()
 		print('tweet parse started')
 		tweet_counter = 0
 		tweeters_list=['WarrenBuffet','Carl_C_Icahn', 'ReformedBroker',
@@ -103,7 +104,8 @@ def tweet_parse():
 		 'RiskReversal', 'InterestArb', 'mark_dow', 'auaurelija', 'MarketPlunger', 'barnejek', 
 		 'ericjackson', 'brianmlucey', 'fwred', 'muddywatersre', 'groditi', 'kiffmeister', 
 		 'Fullcarry', 'mbusigin', 'prchovanec', 'michaelkitces','BI_Advertising', 'Stalingrad_Poor',
-		  'MrScottEddy', 'FoxBusiness','businessinsider', 'markets', 'elonmusk','pulseisgood']
+		  'MrScottEddy', 'FoxBusiness','businessinsider', 'markets', 'elonmusk','pulseisgood',
+		  'AbnormalReturns', 'ResearchPuzzler', 'FarnamStreet', 'ZywaveFP', 'CM_eXchange', 'Reuters']
 		data_list=[]
 		final_obj={}
 		z=0
@@ -213,7 +215,10 @@ def tweet_parse():
 			print(r.status_code, r.reason,'tweet finished')
 		else:
 			print('no tweets to add')
-		time.sleep(600)	
+		finish_time = datetime.now()
+		run_time = (finish_time-start_time).seconds
+		# print(run_time.seconds)
+		time.sleep(600-run_time)	
 
 
 
