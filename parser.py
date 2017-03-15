@@ -9,7 +9,7 @@ import json
 import time
 from celery import Celery
 
-app = Celery('parser', backend='amqp', broker='amqp://localhost:5672/')
+app = Celery('parser', backend='amqp', broker='amqp://104.236.220.239/')
 
 # from models import *
 
