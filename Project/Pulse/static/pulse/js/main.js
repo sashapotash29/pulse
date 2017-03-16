@@ -8,7 +8,7 @@ var snap_info;
 var data;
 var bulk_info = $.ajax(
 		{
-			url: 'http://127.0.0.1:8000/graph',
+			url: 'http://http://104.236.220.239/graph',
 			method: 'GET',
 			success: function(result){
 				data = JSON.parse(result);
