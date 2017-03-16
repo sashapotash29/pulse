@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'Project.settings'
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'Project.settings'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -24,7 +24,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'Project.settings'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.checkthepulse.today','104.236.220.239']
+ALLOWED_HOSTS = ['104.236.220.239']
 
 
 # Application definition
