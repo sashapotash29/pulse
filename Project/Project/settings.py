@@ -24,7 +24,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'Project.settings'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.checkthepulse.today']
+ALLOWED_HOSTS = ['.checkthepulse.today','104.236.220.239']
 
 
 # Application definition
