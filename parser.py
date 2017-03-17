@@ -19,7 +19,7 @@ app = Celery('parser', backend='amqp', broker='amqp://')
 
 
 
-@app.task
+@app.parser
 def news_parse():
 	while True:
 		print('news parse started')
@@ -87,7 +87,7 @@ def news_parse():
 	    	
 
 
-@app.task
+@app.parser
 def tweet_parse():
 	while True:
 		start_time = datetime.now()
