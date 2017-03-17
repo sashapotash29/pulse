@@ -78,7 +78,7 @@ def news_parse():
 		data=json.dumps(final_obj)
 		if len(data_list) > 0:
 			# print(data)
-			r = requests.post('http://127.0.0.1:8000/newsfeed',data=data)
+			r = requests.post('http://www.checkthepulse.today/newsfeed',data=data)
 			print(r.status_code, r.reason,'news finish')
 		else:
 			print('no news to send')
@@ -211,7 +211,7 @@ def tweet_parse():
 		if len(data_list)>0:
 			data=json.dumps(final_obj)
 			# print(data)
-			r = requests.post('http://127.0.0.1:8000/tweetfeed',data=data)
+			r = requests.post('http://checkthepulse.today/tweetfeed',data=data)
 			print(r.status_code, r.reason,'tweet finished')
 		else:
 			print('no tweets to add')
