@@ -55,7 +55,7 @@ def graphs(request):
 	# snap_date_list = snap_stock_data['date_list']
 	# snap_hits = Hit.objects.filter(date_pub__contains=today)
 	# tesla_count=len(tesla_hits)
-	snap_count_list=date_counter('cocacola', date_list)
+	snap_count_list=date_counter('snap', date_list)
 	# print(len(tesla_hits))
 	# snap_obj = {'snap':[snap_stock_data,snap_count_list,snap_date_list]}
 
