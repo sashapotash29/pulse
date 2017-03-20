@@ -136,7 +136,7 @@ def tweet_parse():
 		if len(data_list)>0:
 			data=json.dumps(final_obj)
 			# print(data)
-			r = requests.post('http://checkthepulse.today/tweetfeed',data=data)
+			r = requests.post('http://www.checkthepulse.today/tweetfeed',data=data)
 			print(r.status_code, r.reason,'tweet finished')
 		else:
 			print('no tweets to add')
