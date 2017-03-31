@@ -27,19 +27,21 @@ def graphs(request):
 	today=date.today()
 	print('--------------------today')
 	print(today)
-	start_day = '2017-03-8'
+	start_day = '2017-03-13'
 	start=datetime.strptime(start_day, '%Y-%m-%d').date()
 	print(start)
 	num_days=(today-start).days
 	date_list = [str(today-timedelta(days=x)) for x in range(0,num_days)]
 	print(date_list)
+	print(len(date_list))
 	
 	tesla_stock_data = make_stock_list('TSLA') 
 	# tesla_date_list = tesla_stock_data['date_list']
 	# print('\\\\\\\\\\\\\\\\tesla_date_list')
-	# print(tesla_date_list)
+	print(len(tesla_stock_data['price_list']))
 	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
 	tesla_count_list=date_counter('tesla', date_list)
+	print(len(tesla_count_list))
 	# tesla_obj = {'tesla':[tesla_stock_data, tesla_count_list, tesla_date_list]}
 	
 	coke_stock_data = make_stock_list('Ko') 
@@ -104,19 +106,28 @@ def make_stock_list(tick):
 	day = str(today.day)
 	month = str(today.month-1)
 	year = str(today.year)
-	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=2&b=1&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
+	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=2&b=13&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
 	s = requests.get(url).content
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
 	price_list = []
 	date_list = []
 	dataframe = dataframe.sort_index(axis=0, ascending=False)
+	c=0
 	for index, row in dataframe.iterrows():
-		price_list.append(row.Close)
+		c+=1
+		if c % 5 == 0:
+			price_list.append(row.Close)
+			price_list.append(row.Close)
+			price_list.append(row.Close)
+		else:
+			price_list.append(row.Close)
 		# print('++++++++++++++++++++++++++++++++++++++++++++++')
 		# print(tick)
 		# print
 
 		date_list.append(row.Date)
+	print('date_list')
+	# print(date_list)
 	stock_product = {
 			"company": ticker,
 			"price_list": price_list,

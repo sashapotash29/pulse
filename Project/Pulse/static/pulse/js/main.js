@@ -8,11 +8,11 @@ var snap_info;
 var data;
 var bulk_info = $.ajax(
 		{
-			url: 'http://www.checkthepulse.today/graph',
+			url: 'http://127.0.0.1:8000/graph',
 			method: 'GET',
 			success: function(result){
 				data = JSON.parse(result);
-				// console.log('data')
+				console.log('success?')
 				// console.log(data)
 				$('.loader').css('display','none')
 				tesla_info = data['result']['tesla']
@@ -26,13 +26,13 @@ var bulk_info = $.ajax(
 
 
 
-var unpack_for_line = function(ticker,stock_info){
-	var price_list = stock_info
+// var unpack_for_line = function(ticker,stock_info){
+// 	var price_list = stock_info
 
 	
 
 	
-}
+// }
 
 
 
@@ -82,7 +82,7 @@ var make_bar_graph = function(stock_info){
     			y:{
     				label: {
     					text: "Price (in $USD)",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
     				}
     			},
 
@@ -90,7 +90,7 @@ var make_bar_graph = function(stock_info){
     				show: true,
     				label: {
     					text: "Activity",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
 
     				}
 
@@ -126,6 +126,7 @@ var make_line_graph = function(stock_info){
 
 	require(["d3", "c3"], function(d3, c3){
 		var chart = c3.generate({
+			
 			bindto:'.graphArea',
     		data: {
         		x: 'x',
@@ -142,7 +143,7 @@ var make_line_graph = function(stock_info){
     			y:{
     				label: {
     					text: "Price (in $USD)",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
     				}
     			},
 
@@ -150,7 +151,7 @@ var make_line_graph = function(stock_info){
     				show: true,
     				label: {
     					text: "Activity",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
 
     				}
 
@@ -302,7 +303,7 @@ var side_bar=function(e){
 	$('.tweetsLoader').css('display','block')
 	$.ajax(
 		{
-			url: 'http://www.checkthepulse.today/media',
+			url: 'http://127.0.0.1:8000/media',
 			data: {'company':company, 'date':date},
 			method: 'GET',
 			// dataType: 'application/json',
