@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+print('project urls')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'',include('Pulse.urls',namespace='pulse')),
+    url(r'^',include('Pulse.urls',namespace='pulse')),
     # url(r'',include('Pulse.urls',namespace='newsfeed')),
     # url(r'',include('Pulse.urls',namespace='tweetfeed')),
     # url(r'',include('Pulse.urls',namespace='media')),
