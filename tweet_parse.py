@@ -144,5 +144,5 @@ def tweet_parse():
 			print('no tweets to add')
 		finish_time = datetime.now()
 		run_time = (finish_time-start_time).seconds
-		#print(run_time)
+		# print(run_time)
 		time.sleep(600-run_time)	

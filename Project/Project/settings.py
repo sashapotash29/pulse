@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['www.checkthepulse.today','127.0.0.1:8000','checkthepulse.today','104.236.220.239']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
