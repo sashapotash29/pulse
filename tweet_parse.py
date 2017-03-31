@@ -69,12 +69,14 @@ def tweet_parse():
 				
 					if date_time_object>=compare:
 						print('time check good')
-						# print(date_time_object)
+						print(date_time_object)
 						# if item.date_pub==0:
 					# 	pass
 					
 						titles=item.title.string
 						title=titles.replace("&apos;","'")
+						print('title')
+						print(title)
 						if 'Tesla' in title or 'tesla' in title: 
 							print('TESLA')
 							print(item.title.string)
@@ -132,7 +134,7 @@ def tweet_parse():
 						# print(tweet_counter)
 		
 		final_obj['result']=data_list
-		# print(final_obj)
+		print(final_obj)
 		if len(data_list)>0:
 			data=json.dumps(final_obj)
 			# print(data)
