@@ -31,6 +31,7 @@ def tweet_parse():
 		 'Fullcarry', 'mbusigin', 'prchovanec', 'michaelkitces','BI_Advertising', 'Stalingrad_Poor',
 		  'MrScottEddy', 'FoxBusiness','businessinsider', 'markets', 'elonmusk','pulseisgood',
 		  'AbnormalReturns', 'ResearchPuzzler', 'FarnamStreet', 'ZywaveFP', 'CM_eXchange', 'Reuters']
+		
 		data_list=[]
 		final_obj={}
 		z=0
@@ -51,21 +52,21 @@ def tweet_parse():
 					# print(item)
 					tweet_datetime=item.pubdate.string
 					tweet_datetime = tweet_datetime[5:len(tweet_datetime)-6]
-					# print('tweet_datetime')
-					# print(tweet_datetime)
+					print('tweet_datetime')
+					print(tweet_datetime)
 					
 					date_time_object=datetime.strptime(tweet_datetime, '%d %b %Y %H:%M:%S')
 					# print('date_time_object')
 					# print(date_time_object)
 					
 					# print(date_news)
-					now = datetime.utcnow()
+					now = datetime.utcnow()+timedelta(hours=1)
 					# now=datetime.strptime(now, '%d %b %Y %H:%M:%S %z')
 					compare = now-timedelta(minutes=10)
-					# print('now')
-					# print(now)
-					# print ('compare')
-					# print (compare)
+					print('now')
+					print(now)
+					print ('compare')
+					print (compare)
 				
 					if date_time_object>=compare:
 						print('time check good')
@@ -132,7 +133,7 @@ def tweet_parse():
 						# print(tweet_counter)
 		
 		final_obj['result']=data_list
-		# print(final_obj)
+		print(final_obj)
 		if len(data_list)>0:
 			data=json.dumps(final_obj)
 			# print(data)
