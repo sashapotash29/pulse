@@ -8,6 +8,7 @@ import requests
 import io
 import pandas as pd
 
+print('views');
 # Create your views here.
 
 ##################
@@ -15,6 +16,7 @@ import pandas as pd
 #############
 
 def home(request):
+	print('getting home')
 	return render(request, 'pulse/main.html',{})
 
 ###################

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+print('reading setting')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,7 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.checkthepulse.today','127.0.0.1','checkthepulse.today','104.236.220.239']
+ALLOWED_HOSTS = ['www.checkthepulse.today','127.0.0.1:8000','checkthepulse.today','104.236.220.239']
+
 
 
 # Application definition
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +127,5 @@ except ImportError:
     import sys, traceback
     sys.stderr.write("Warning")
     traceback.print_exc()
+
+print('basdir', BASE_DIR)

@@ -70,12 +70,14 @@ def tweet_parse():
 				
 					if date_time_object>=compare:
 						print('time check good')
-						# print(date_time_object)
+						print(date_time_object)
 						# if item.date_pub==0:
 					# 	pass
 					
 						titles=item.title.string
 						title=titles.replace("&apos;","'")
+						print('title')
+						print(title)
 						if 'Tesla' in title or 'tesla' in title: 
 							print('TESLA')
 							print(item.title.string)
