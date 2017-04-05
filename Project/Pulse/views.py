@@ -132,7 +132,7 @@ def make_stock_list(tick):
 	# print(date_list)
 	stock_product = {
 			"company": ticker,
-			"price_list": price_list,
+			"price_list": price_list.reverse(),
 			"date_list": date_list
 	}
 	# print('---------------------stock_product')
