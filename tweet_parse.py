@@ -52,8 +52,8 @@ def tweet_parse():
 					# print(item)
 					tweet_datetime=item.pubdate.string
 					tweet_datetime = tweet_datetime[5:len(tweet_datetime)-6]
-					print('tweet_datetime')
-					print(tweet_datetime)
+					# print('tweet_datetime')
+					# print(tweet_datetime)
 					
 					date_time_object=datetime.strptime(tweet_datetime, '%d %b %Y %H:%M:%S')
 					# print('date_time_object')
@@ -63,14 +63,14 @@ def tweet_parse():
 					now = datetime.utcnow()+timedelta(hours=1)
 					# now=datetime.strptime(now, '%d %b %Y %H:%M:%S %z')
 					compare = now-timedelta(minutes=10)
-					print('now')
-					print(now)
-					print ('compare')
-					print (compare)
+					# print('now')
+					# print(now)
 				
 					if date_time_object>=compare:
 						print('time check good')
 						print(date_time_object)
+						print ('compare')
+						print (compare)
 						# if item.date_pub==0:
 					# 	pass
 					

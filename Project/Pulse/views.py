@@ -24,7 +24,7 @@ def home(request):
 ################
 
 def graphs(request):
-	# print('graphsssss')
+	print('graphsssss')
 	# print(today)
 	today=date.today()
 	print('--------------------today')
@@ -82,6 +82,7 @@ def graphs(request):
 				}
 	final_obj = {'result':inner_obj}
 	# final_obj = json.dumps(final_obj)
+	print('finished graphs')
 	return HttpResponse(json.dumps(final_obj))
 
 
@@ -126,16 +127,17 @@ def make_stock_list(tick):
 		# print('++++++++++++++++++++++++++++++++++++++++++++++')
 		# print(tick)
 		# print
-
 		date_list.append(row.Date)
+
+	price_list=price_list[::-1]
 	print('date_list')
 	# print(date_list)
 	stock_product = {
 			"company": ticker,
-			"price_list": price_list.reverse(),
+			"price_list": price_list,
 			"date_list": date_list
 	}
-	# print('---------------------stock_product')
+	print('---------------------stock_product')
 	# print(stock_product)
 	return stock_product
 
