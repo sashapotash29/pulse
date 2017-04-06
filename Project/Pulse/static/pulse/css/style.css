@@ -247,7 +247,7 @@ body{
  	margin:0;
 	padding:0;
 	font-size: 2em;
-	border: dashed black;
+	/*border: dashed black;*/
 	color:lightblue;
 	background-color: darkblue;
 
