@@ -522,7 +522,7 @@ body{
 	margin-bottom: .5rem
 	padding:0;
 	padding-left: .5rem;
-	overflow:auto;
+	overflow-y:auto;
 
 	
 }
@@ -546,7 +546,8 @@ body{
 	width:95%;
 	
 }
-
+/*============================================*/
+/*=================Graph styles overrides*/
 .graphTitle{
 	background: white;
 	margin: 0;
@@ -561,17 +562,34 @@ body{
 
 .c3-axis-y text {
    /*fill: red;*/
-   font-size:1.7rem;
+   font-size:1.8rem;
 }
+
+.c3-axis-y-label{
+	/*margin-right: 10px;	*/
+	position:justify-left;
+}
+
+.c3-axis-y2-label{
+	margin-left: 10px;
+}
+
+.c3-axis-y text {
+   fill: #1D698A;
+   font-size:1.5rem;
+}
+
 .c3-axis-y2 text {
-   /*fill: red;*/
-   font-size:1.7rem;
+   fill: #C4580F;
+   font-size:1.5rem;
 }
 .c3-axis-x text {
     font-size:1.8rem;
-    fill:purple;
+    /*fill:purple;*/
 }
-
+.tick{
+	margin:3em;
+}
 .footer{
 	color:white;
 	text-align: center;

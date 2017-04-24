@@ -63,16 +63,17 @@ def tweet_parse():
 					now = datetime.utcnow()+timedelta(hours=1)
 					# now=datetime.strptime(now, '%d %b %Y %H:%M:%S %z')
 					compare = now-timedelta(minutes=10)
-					print('now')
-					print(now)
-					print ('compare')
-					print (compare)
+					# print('now')
+					# print(now)
+					# print ('compare')
+					# print (compare)
 				
 					if date_time_object>=compare:
 						print('time check good')
 						print(date_time_object)
 						# if item.date_pub==0:
-					# 	pass
+						print('compare')
+						print(compare)
 					
 						titles=item.title.string
 						title=titles.replace("&apos;","'")

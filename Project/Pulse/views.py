@@ -128,6 +128,7 @@ def make_stock_list(tick):
 		# print
 
 		date_list.append(row.Date)
+	price_list=price_list[::-1]
 	print('date_list')
 	# print(date_list)
 	stock_product = {
