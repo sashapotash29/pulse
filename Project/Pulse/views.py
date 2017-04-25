@@ -27,7 +27,7 @@ def graphs(request):
 	print('graphsssss')
 	# print(today)
 	date_list = make_date()
-	date_list = [str(date) for date in date_list]
+	
 	tesla_stock_prod = make_stock_list('TSLA') 
 	print('prod')
 	print(tesla_stock_prod)
@@ -61,18 +61,7 @@ def graphs(request):
 	# print(len(tesla_hits))
 	# snap_obj = {'snap':[snap_stock_data,snap_count_list,snap_date_list]}
 
-	# coke_stock_data = make_stock_list('KO') 
-	# coke_date_list = coke_stock_data['date_list']
-	# coke_hits = Hit.objects.filter(company='cocacola')
-	# coke_count=len(tesla_hits)
-	# coke_obj = {'coke':[coke_count,coke_stock_data]}
-	# # print(len(coke_hits))
-	
-	# snap_hits = Hit.objects.filter(company='snap')
-	# snap_count=len(tesla_hits)
-	# snap_obj = {'snap':[snap_count,snap_stock_data]}
-	# print(hits.objects)
-	# print(hits)
+	date_list = [str(date) for date in date_list]
 	inner_obj = {'tesla':[tesla_stock_data, tesla_count_list, date_list],
 				'coke': [coke_stock_data,coke_count_list, date_list],
 				'snap': [snap_stock_data,snap_count_list, date_list]
