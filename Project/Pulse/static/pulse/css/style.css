@@ -594,3 +594,7 @@ body{
 	color:white;
 	text-align: center;
 }
+
+.c3-axis-x g:nth-child(odd){
+	display:none;
+}
