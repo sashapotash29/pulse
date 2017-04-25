@@ -27,7 +27,7 @@ def graphs(request):
 	print('graphsssss')
 	# print(today)
 	date_list = make_date()
-	
+	date_list = [str(date) for date in date_list]
 	tesla_stock_prod = make_stock_list('TSLA') 
 	tesla_stock_data = fix_dates(date_list, tesla_stock_prod) 
 	# tesla_date_list = tesla_stock_data['date_list']
@@ -177,6 +177,7 @@ def fix_dates(date_list, stock_product):
 			stock_product['date_list'].insert(i,date_list[i])
 	
 	stock_product['date_list'] = [str(date) for date in stock_product['date_list']]	
+	# date_list = [str(date) for date in date_list]	
 	print(stock_product['price_list'])		
 	print(stock_product)
 	return stock_product
