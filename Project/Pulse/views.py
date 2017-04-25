@@ -67,7 +67,7 @@ def date_counter(name, date_list):
 		# print('dateeeeeeeeeeeeeeeeeeeeeeeeeeee')
 		# print(date)
 		new_date = datetime.strptime(date, '%Y-%m-%d').date()
-		hits = Hit.objects.filter(company=name, date_pub__contains=new_date)
+		hits = Hit.objects.filter(company=name, date_pub__contains=new_date).distinct('link')
 		# print('counter hits')
 		# print(hits)
 		count_list.append(len(hits))
