@@ -64,7 +64,6 @@ def graphs(request):
 	# coke_obj = {'coke':[coke_count,coke_stock_data]}
 	# # print(len(coke_hits))
 	
-	# snap_stock_data = make_stock_list('SNAP') 
 	# snap_hits = Hit.objects.filter(company='snap')
 	# snap_count=len(tesla_hits)
 	# snap_obj = {'snap':[snap_count,snap_stock_data]}
@@ -176,6 +175,8 @@ def fix_dates(date_list, stock_product):
 			# new_date_list.append(date_list[i])
 			stock_product['price_list'].insert(i,stock_product['price_list'][i-1])
 			stock_product['date_list'].insert(i,date_list[i])
+	
+	stock_product['date_list'] = [str(date) for date in stock_product['date_list']]	
 	print(stock_product['price_list'])		
 	print(stock_product)
 	return stock_product
