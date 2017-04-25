@@ -29,39 +29,26 @@ def graphs(request):
 	date_list = make_date()
 	
 	tesla_stock_prod = make_stock_list('TSLA') 
-	print('prod')
-	print(tesla_stock_prod)
 	tesla_stock_data = fix_dates(date_list, tesla_stock_prod) 
-	print('data')
-	print(tesla_stock_data)
-	# tesla_date_list = tesla_stock_data['date_list']
-	# print('\\\\\\\\\\\\\\\\tesla_date_list')
-	print(len(tesla_stock_data['price_list']))
-	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
-	tesla_count_list=date_counter('tesla', date_list)
-	print(len(tesla_count_list))
-	# tesla_obj = {'tesla':[tesla_stock_data, tesla_count_list, tesla_date_list]}
+	
 	
 	coke_stock_prod = make_stock_list('Ko') 
 	coke_stock_data = fix_dates(date_list, coke_stock_prod) 
-	# coke_date_list = coke_stock_data['date_list']
-	# coke_hits = Hit.objects.filter(date_pub__contains=today)
-	# tesla_count=len(tesla_hits)
-	coke_count_list=date_counter('cocacola', date_list)
-	# print(len(tesla_hits))
-	# coke_obj = {'cocacola':[coke_stock_data,coke_count_list,coke_date_list]}
-
+	
 
 	snap_stock_prod = make_stock_list('SNAP') 
 	snap_stock_data = fix_dates(date_list, snap_stock_prod) 
-	# snap_date_list = snap_stock_data['date_list']
-	# snap_hits = Hit.objects.filter(date_pub__contains=today)
-	# tesla_count=len(tesla_hits)
-	snap_count_list=date_counter('snap', date_list)
-	# print(len(tesla_hits))
-	# snap_obj = {'snap':[snap_stock_data,snap_count_list,snap_date_list]}
-
+	# tesla_date_list = tesla_stock_data['date_list']
+	
 	date_list = [str(date) for date in date_list]
+	
+	tesla_count_list=date_counter('tesla', date_list)
+	
+	coke_count_list=date_counter('cocacola', date_list)
+	
+	snap_count_list=date_counter('snap', date_list)
+	
+
 	inner_obj = {'tesla':[tesla_stock_data, tesla_count_list, date_list],
 				'coke': [coke_stock_data,coke_count_list, date_list],
 				'snap': [snap_stock_data,snap_count_list, date_list]
