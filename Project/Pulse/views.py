@@ -24,10 +24,11 @@ def home(request):
 ################
 
 def graphs(request):
-	print('graphsssss')
+	print('graphsssss still')
 	# print(today)
 	date_list = make_date()
 	date_list = [str(date) for date in date_list]
+	print('TESLA')
 	tesla_stock_prod = make_stock_list('TSLA') 
 	print('prod')
 	print(tesla_stock_prod)
@@ -36,12 +37,12 @@ def graphs(request):
 	print(tesla_stock_data)
 	# tesla_date_list = tesla_stock_data['date_list']
 	# print('\\\\\\\\\\\\\\\\tesla_date_list')
-	print(len(tesla_stock_data['price_list']))
+	# print(len(tesla_stock_data['price_list']))
 	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
 	tesla_count_list=date_counter('tesla', date_list)
-	print(len(tesla_count_list))
+	# print(len(tesla_count_list))
 	# tesla_obj = {'tesla':[tesla_stock_data, tesla_count_list, tesla_date_list]}
-	
+	print('COKE')
 	coke_stock_prod = make_stock_list('Ko') 
 	coke_stock_data = fix_dates(date_list, coke_stock_prod) 
 	# coke_date_list = coke_stock_data['date_list']
@@ -51,7 +52,7 @@ def graphs(request):
 	# print(len(tesla_hits))
 	# coke_obj = {'cocacola':[coke_stock_data,coke_count_list,coke_date_list]}
 
-
+	print("SNAP")
 	snap_stock_prod = make_stock_list('SNAP') 
 	snap_stock_data = fix_dates(date_list, snap_stock_prod) 
 	# snap_date_list = snap_stock_data['date_list']
@@ -160,7 +161,7 @@ def make_date():
 	return date_list
 
 def fix_dates(date_list, stock_product):
-	
+	print('fix_dates')
 	l = len(date_list)
 	l2 = len(stock_product['date_list'])
 	x=l-l2
@@ -168,7 +169,7 @@ def fix_dates(date_list, stock_product):
 	# new_date_list =[]
 	i=0
 	stock_product['date_list'] += x*[None] 
-	print('starting while')
+	# print('starting while')
 	while len(stock_product['price_list']) < l:
 		
 		if stock_product['date_list'][i] == date_list[i]:
@@ -184,6 +185,7 @@ def fix_dates(date_list, stock_product):
 	# date_list = [str(date) for date in date_list]	
 	print(stock_product['price_list'])		
 	print(stock_product)
+	print('end fix dates')
 	return stock_product
 
 

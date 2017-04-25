@@ -118,7 +118,7 @@ var make_line_graph = function(stock_info){
 	// console.log(stock_info)
 	var ticker = stock_info[0]['company']
 	var price_list = [ticker].concat(stock_data['price_list'])
-	// console.log(price_list)
+	console.log(price_list)
 	var count_list = ['Activity'].concat(stock_info[1])
 	var orig_date_list = stock_info[2]
 	var date_list = ['x'].concat(stock_info[2])
