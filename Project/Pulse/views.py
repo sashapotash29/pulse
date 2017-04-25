@@ -29,7 +29,11 @@ def graphs(request):
 	date_list = make_date()
 	date_list = [str(date) for date in date_list]
 	tesla_stock_prod = make_stock_list('TSLA') 
+	print('prod')
+	print(tesla_stock_prod)
 	tesla_stock_data = fix_dates(date_list, tesla_stock_prod) 
+	print('data')
+	print(tesla_stock_data)
 	# tesla_date_list = tesla_stock_data['date_list']
 	# print('\\\\\\\\\\\\\\\\tesla_date_list')
 	print(len(tesla_stock_data['price_list']))
