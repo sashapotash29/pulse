@@ -8,6 +8,7 @@ import requests
 import io
 import pandas as pd
 
+print('views');
 # Create your views here.
 
 ##################
@@ -15,6 +16,7 @@ import pandas as pd
 #############
 
 def home(request):
+	print('getting home')
 	return render(request, 'pulse/main.html',{})
 
 ###################
@@ -22,62 +24,38 @@ def home(request):
 ################
 
 def graphs(request):
-	# print('graphsssss')
+	print('graphsssss')
 	# print(today)
-	today=date.today()
-	print('--------------------today')
-	print(today)
-	start_day = '2017-03-8'
-	start=datetime.strptime(start_day, '%Y-%m-%d').date()
-	print(start)
-	num_days=(today-start).days
-	date_list = [str(today-timedelta(days=x)) for x in range(0,num_days)]
-	print(date_list)
+	date_list = make_date()
 	
-	tesla_stock_data = make_stock_list('TSLA') 
+	tesla_stock_prod = make_stock_list('TSLA') 
+	tesla_stock_data = fix_dates(date_list, tesla_stock_prod) 
+	
+	
+	coke_stock_prod = make_stock_list('Ko') 
+	coke_stock_data = fix_dates(date_list, coke_stock_prod) 
+	
+
+	snap_stock_prod = make_stock_list('SNAP') 
+	snap_stock_data = fix_dates(date_list, snap_stock_prod) 
 	# tesla_date_list = tesla_stock_data['date_list']
-	# print('\\\\\\\\\\\\\\\\tesla_date_list')
-	# print(tesla_date_list)
-	# tesla_hits = Hit.objects.filter(date_pub__contains=today)
+	
+	date_list = [str(date) for date in date_list]
+	
 	tesla_count_list=date_counter('tesla', date_list)
-	# tesla_obj = {'tesla':[tesla_stock_data, tesla_count_list, tesla_date_list]}
 	
-	coke_stock_data = make_stock_list('Ko') 
-	# coke_date_list = coke_stock_data['date_list']
-	# coke_hits = Hit.objects.filter(date_pub__contains=today)
-	# tesla_count=len(tesla_hits)
 	coke_count_list=date_counter('cocacola', date_list)
-	# print(len(tesla_hits))
-	# coke_obj = {'cocacola':[coke_stock_data,coke_count_list,coke_date_list]}
-
-
-	snap_stock_data = make_stock_list('SNAP') 
-	# snap_date_list = snap_stock_data['date_list']
-	# snap_hits = Hit.objects.filter(date_pub__contains=today)
-	# tesla_count=len(tesla_hits)
-	snap_count_list=date_counter('snap', date_list)
-	# print(len(tesla_hits))
-	# snap_obj = {'snap':[snap_stock_data,snap_count_list,snap_date_list]}
-
-	# coke_stock_data = make_stock_list('KO') 
-	# coke_date_list = coke_stock_data['date_list']
-	# coke_hits = Hit.objects.filter(company='cocacola')
-	# coke_count=len(tesla_hits)
-	# coke_obj = {'coke':[coke_count,coke_stock_data]}
-	# # print(len(coke_hits))
 	
-	# snap_stock_data = make_stock_list('SNAP') 
-	# snap_hits = Hit.objects.filter(company='snap')
-	# snap_count=len(tesla_hits)
-	# snap_obj = {'snap':[snap_count,snap_stock_data]}
-	# print(hits.objects)
-	# print(hits)
+	snap_count_list=date_counter('snap', date_list)
+	
+
 	inner_obj = {'tesla':[tesla_stock_data, tesla_count_list, date_list],
 				'coke': [coke_stock_data,coke_count_list, date_list],
 				'snap': [snap_stock_data,snap_count_list, date_list]
 				}
 	final_obj = {'result':inner_obj}
 	# final_obj = json.dumps(final_obj)
+	print('finished graphs')
 	return HttpResponse(json.dumps(final_obj))
 
 
@@ -89,7 +67,7 @@ def date_counter(name, date_list):
 		# print('dateeeeeeeeeeeeeeeeeeeeeeeeeeee')
 		# print(date)
 		new_date = datetime.strptime(date, '%Y-%m-%d').date()
-		hits = Hit.objects.filter(company=name, date_pub__contains=new_date)
+		hits = Hit.objects.filter(company=name, date_pub__contains=new_date).distinct('link')
 		# print('counter hits')
 		# print(hits)
 		count_list.append(len(hits))
@@ -104,26 +82,84 @@ def make_stock_list(tick):
 	day = str(today.day)
 	month = str(today.month-1)
 	year = str(today.year)
-	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=2&b=1&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
+	url = 'http://chart.finance.yahoo.com/table.csv?s='+ticker+'&a=2&b=13&c=2017&d='+month+'&e='+day+'&f='+year+'&g=d&ignore=.csv'
+	print(url)
 	s = requests.get(url).content
 	dataframe = pd.read_csv(io.StringIO(s.decode('utf-8')))
 	price_list = []
 	date_list = []
 	dataframe = dataframe.sort_index(axis=0, ascending=False)
+	c=0
 	for index, row in dataframe.iterrows():
-		price_list.append(row.Close)
+		c+=1
+		if c % 5 == 0:
+			price_list.append(row.Close)
+			# price_list.append(row.Close)
+			# price_list.append(row.Close)
+		else:
+			price_list.append(row.Close)
 		# print('++++++++++++++++++++++++++++++++++++++++++++++')
 		# print(tick)
-		# print
+		date_obj = datetime.strptime(row.Date, '%Y-%m-%d').date()
+		date_list.append(date_obj)
 
-		date_list.append(row.Date)
+	# price_list=price_list[::-1]
+	# print('date_list')
+	# print(date_list)
+	# print(len(date_list))
 	stock_product = {
 			"company": ticker,
 			"price_list": price_list,
 			"date_list": date_list
 	}
 	# print('---------------------stock_product')
+	# print(price_list)
+	# print(len(price_list))
 	# print(stock_product)
+
+	return stock_product
+
+
+def make_date():
+	today=date.today()
+	# print('--------------------today')
+	# print(today)
+	start_day = '2017-03-12'
+	start=datetime.strptime(start_day, '%Y-%m-%d').date()
+	# print(start)
+	num_days=(today-start).days
+	date_list = [today-timedelta(days=x) for x in range(0,num_days)]
+	# print('========dates')
+	# print(date_list)
+	# print(len(date_list))
+	date_list = date_list[::-1]
+	return date_list
+
+def fix_dates(date_list, stock_product):
+	
+	l = len(date_list)
+	l2 = len(stock_product['date_list'])
+	x=l-l2
+	# new_price_list=[]
+	# new_date_list =[]
+	i=0
+	stock_product['date_list'] += x*[None] 
+	print('starting while')
+	while len(stock_product['price_list']) < l:
+		
+		if stock_product['date_list'][i] == date_list[i]:
+			print('yes')
+			i+=1
+		else:
+			print('no')
+			# new_date_list.append(date_list[i])
+			stock_product['price_list'].insert(i,stock_product['price_list'][i-1])
+			stock_product['date_list'].insert(i,date_list[i])
+	
+	stock_product['date_list'] = [str(date) for date in stock_product['date_list']]	
+	# date_list = [str(date) for date in date_list]	
+	print(stock_product['price_list'])		
+	print(stock_product)
 	return stock_product
 
 
@@ -208,8 +244,8 @@ def date_examples(request):
 	print(date2)
 	date =datetime.strptime(date2, '%b %d %Y %H:%M:%S %Z').date()
 	print(date)
-	hits_news = Hit.objects.filter(company=company, date_pub__contains=date, source='News')
-	hits_twit = Hit.objects.filter(company=company, date_pub__contains=date, source='Twitter')
+	hits_news = Hit.objects.filter(company=company, date_pub__contains=date, source='News').distinct('link')
+	hits_twit = Hit.objects.filter(company=company, date_pub__contains=date, source='Twitter').distinct('link')
 	news_hit = hits_news.reverse()
 	twit_hit = hits_twit.reverse()
 	# print(hits[0].date_pub)
