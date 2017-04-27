@@ -144,3 +144,7 @@ def tweet_parse():
 		run_time = (finish_time-start_time).seconds
 		# print(run_time.seconds)
 		time.sleep(600-run_time)	
+
+
+
+		
