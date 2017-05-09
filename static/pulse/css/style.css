@@ -148,7 +148,7 @@ body {
 
 .ddg {
   background-color: white;
-  height: 100%;
+  /*height: 100%;*/
   margin: 0;
   padding: 0;
   width: 20em;
@@ -190,7 +190,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 2em;
-    border: dashed black;
+    /*border: dashed black;*/
     color: lightblue;
     background-color: darkblue; }
 
