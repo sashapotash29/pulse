@@ -6,14 +6,15 @@ var coke_info;
 var snap_info;
 
 var data;
+console.log('starting')
 var bulk_info = $.ajax(
 		{
-			url: 'http://www.checkthepulse.today/graph',
+			url: 'http://127.0.0.1:8000/graph',
 			method: 'GET',
 			success: function(result){
 				data = JSON.parse(result);
-				// console.log('data')
-				// console.log(data)
+				console.log('data')
+				console.log(data)
 				$('.loader').css('display','none')
 				tesla_info = data['result']['tesla']
 				coke_info = data['result']['coke']
@@ -22,7 +23,7 @@ var bulk_info = $.ajax(
 			}
 		}
 )
-
+// http://www.checkthepulse.today
 
 
 
@@ -302,7 +303,7 @@ var side_bar=function(e){
 	$('.tweetsLoader').css('display','block')
 	$.ajax(
 		{
-			url: 'http://www.checkthepulse.today/media',
+			url: 'http://127.0.0.1:8000/media',
 			data: {'company':company, 'date':date},
 			method: 'GET',
 			// dataType: 'application/json',
