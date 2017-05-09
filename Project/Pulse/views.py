@@ -24,7 +24,7 @@ def home(request):
 ################
 
 def graphs(request):
-	print('graphsssss')
+	print('graphsssss still')
 	# print(today)
 	date_list = make_date()
 	
@@ -136,7 +136,7 @@ def make_date():
 	return date_list
 
 def fix_dates(date_list, stock_product):
-	
+	print('fix_dates')
 	l = len(date_list)
 	l2 = len(stock_product['date_list'])
 	x=l-l2
@@ -144,7 +144,7 @@ def fix_dates(date_list, stock_product):
 	# new_date_list =[]
 	i=0
 	stock_product['date_list'] += x*[None] 
-	print('starting while')
+	# print('starting while')
 	while len(stock_product['price_list']) < l:
 		
 		if stock_product['date_list'][i] == date_list[i]:
@@ -160,6 +160,7 @@ def fix_dates(date_list, stock_product):
 	# date_list = [str(date) for date in date_list]	
 	print(stock_product['price_list'])		
 	print(stock_product)
+	print('end fix dates')
 	return stock_product
 
 
