@@ -345,7 +345,7 @@ body {
   margin-bottom: .5rem;
   padding: 0;
   padding-left: .5rem;
-  overflow: auto; }
+  overflow-y: auto; }
   .list li {
     font-size: 2rem; }
 
