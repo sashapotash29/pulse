@@ -101,7 +101,7 @@ body{
   	/*margin: 30px auto;*/
 	display: block;
 	opacity:1;
-	transition: opacity 4s;
+	transition: all 4s;
 }
 
 
@@ -559,12 +559,19 @@ body{
 .newsLi{
 	list-style: none;
 	width:95%;
+	margin:auto;
 }	
 
 .tweetsLi{
 	list-style: none;
 	width:95%;
+	margin: auto;
 	
+}
+.peepTweetsLi{
+	list-style: none;
+	width:95%;
+	margin: auto;
 }
 /*============================================*/
 /*=================Graph styles overrides*/

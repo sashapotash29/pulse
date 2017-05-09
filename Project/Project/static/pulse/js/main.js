@@ -8,7 +8,7 @@ var snap_info;
 var data;
 var bulk_info = $.ajax(
 		{
-			url: 'http://127.0.0.1:8000/graph',
+			url: '/graph',
 			method: 'GET',
 			success: function(result){
 				data = JSON.parse(result);
@@ -304,7 +304,7 @@ var side_bar=function(e){
 	$('.tweetsLoader').css('display','block')
 	$.ajax(
 		{
-			url: 'http://127.0.0.1:8000/media',
+			url: '/media',
 			data: {'company':company, 'date':date},
 			method: 'GET',
 			// dataType: 'application/json',
@@ -359,6 +359,7 @@ var side_bar=function(e){
 					var tweets_li = $('<li></li>')
 					tweets_li.text('Sorry No Tweets Available For This Day')
 					tweets_li.addClass('tweetsLi')
+
 					// TARGET THE CONTENT NOT EVERYTHING?
 					
 					// tweets_li.append(linkTag)
@@ -386,6 +387,12 @@ var side_bar=function(e){
 					}
 				}
 				// SECOND 'FOR LOOP' FOR TWEETS ENDS
+				var peep_ul = $('.PeoplesInfo');
+				peep_ul.empty();
+				var peep_tweets_li = $('<li></li>')
+				peep_tweets_li.text('Sorry No Tweets Available For This Day');
+				peep_ul.addClass('peepTweetsLi');
+				peep_ul.append(peep_tweets_li);
 			}
 
 		}
