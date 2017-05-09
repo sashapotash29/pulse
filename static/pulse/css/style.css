@@ -14,9 +14,7 @@ body {
 
 .loader {
   border: 16px solid #f3f3f3;
-  /* Light grey */
   border-top: 16px solid #3498db;
-  /* Blue */
   border-radius: 50%;
   width: 180px;
   height: 180px;
@@ -30,9 +28,7 @@ body {
 /*NEWS LOADER*/
 .newsLoader {
   border: 16px solid #f3f3f3;
-  /* Light grey */
   border-top: 16px solid #3498db;
-  /* Blue */
   border-radius: 50%;
   width: 180px;
   height: 180px;
@@ -47,9 +43,7 @@ body {
 /*TWEETS LOADER*/
 .tweetsLoader {
   border: 16px solid #f3f3f3;
-  /* Light grey */
   border-top: 16px solid #3498db;
-  /* Blue */
   border-radius: 50%;
   width: 180px;
   height: 180px;
@@ -70,8 +64,26 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  /*z-index: 1;*/ }
+  align-items: center; }
+
+/*#loadingMessage{
+  display:none;
+
+}*/
+.hides{
+  /*display:none;*/
+  opacity:0;
+  /*transition: all 4s;*/
+}
+.showing{
+  font-size: 30px;
+  font-style: bold;
+  display:block;
+  opacity:1;
+  transition: all 3s;
+}
+
+
 
 /*BAR AND LINE*/
 .superGraph {
@@ -86,13 +98,7 @@ body {
 .barGraph {
   display: none; }
 
-#canvas {
-  /*z-index: -1;*/
-  /*opacity: 0;*/
-  /*display:none;*/ }
-
 .top {
-  background-color: red;
   text-align: center;
   height: 10%;
   width: 100;
@@ -122,23 +128,6 @@ body {
   margin: 0;
   padding: 0; }
 
-/*#logo{
-	background-color: #F8DD97;
-	height:100%;
-	margin:0;
-	padding:0;
-	vertical-align: center;
-	text-align: center;
-	bottom:10%;
-
-}*/
-.dropdownList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background-color: black;
-  height: 100%; }
-
 .ddg {
   background-color: white;
   height: 100%;
@@ -159,15 +148,14 @@ body {
   font-size: 2em;
   border: none;
   background-color: black; }
-
-.graphNavItem:hover {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 2em;
-  color: black;
-  background-color: white; }
+  .graphNavItem:hover {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    color: black;
+    background-color: white; }
 
 .graphButton {
   height: 100%;
@@ -178,16 +166,15 @@ body {
   border-radius: 10px;
   background-color: white;
   color: darkblue; }
-
-.graphButton:hover {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 2em;
-  border: dashed black;
-  color: lightblue;
-  background-color: darkblue; }
+  .graphButton:hover {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    border: dashed black;
+    color: lightblue;
+    background-color: darkblue; }
 
 #graphWord {
   background-color: #333533;
@@ -195,31 +182,52 @@ body {
   border: none;
   color: #EEF1E7;
   text-align: center;
-  vertical-align: center;
-  display: inline-block;
-  font-size: 2em;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%; }
-
-#graphWord:hover {
-  background-color: #EEF1E7;
-  /* Green */
-  border: none;
-  color: #333533;
-  text-align: center;
-  display: inline-block;
-  padding: 0;
-  height: 100%;
-  width: 100%; }
+  #graphWord:hover {
+    background-color: #EEF1E7;
+    /* Green */
+    color: #333533; }
 
 .graphOption {
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: #333533;
   color: white;
-  border: black; }
+  border: #333533; }
+
+.dropdownList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #333533;
+  /*height:100%;*/ }
+
+.ulButton {
+  padding: 1em;
+  margin: 0;
+  /*height:100%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.liButton {
+  width: 100%;
+  list-style: none;
+  font-size: 2em;
+  margin-top: .2em;
+  margin-bottom: .2em;
+  height: 50%;
+  padding: 0;
+  /*background-color:black;*/
+  color: white;
+  /*border: black;*/ }
 
 #mainTitle {
   font-size: 6em;
@@ -227,20 +235,19 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  text-align: left;
-  vertical-align: center;
   background-color: #333533;
   color: white;
-  padding-left: .5em; }
+  padding-left: .5em;
+  display: flex;
+  justify-content: left;
+  align-items: center; }
 
 /*MIDDLE PORTION*/
 .right {
-  /*	border: dashed pink;*/
   height: 100%;
   background-color: white;
   padding: 0;
   margin: 0;
-  /*margin-left: .3em;*/
   border-left-width: .01em;
   border-left: lightblue solid; }
 
@@ -254,20 +261,6 @@ body {
   text-decoration: underline; }
 
 /*BOTTOM*/
-.ulButton {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  justify-content: center; }
-
-.liButton {
-  width: 100%;
-  list-style: none;
-  font-size: 2em;
-  margin: 0;
-  height: 50%;
-  padding: 0; }
-
 .bttn {
   width: 100%;
   font-size: 2rem;
@@ -279,32 +272,26 @@ body {
 #tsla {
   background-color: blue;
   color: white; }
-
-#tsla:hover {
-  background-color: white;
-  color: blue; }
+  #tsla:hover {
+    background-color: white;
+    color: blue; }
 
 #ko {
   background-color: #f80000;
   color: white; }
-
-#ko:hover {
-  background-color: white;
-  color: #f80000; }
+  #ko:hover {
+    background-color: white;
+    color: #f80000; }
 
 #snap {
   background-color: yellow;
   color: black; }
-
-#snap:hover {
-  background-color: black;
-  color: yellow; }
+  #snap:hover {
+    background-color: black;
+    color: yellow; }
 
 .socialDetail {
   list-style: none; }
-
-.row {
-  /*height: 8em;*/ }
 
 .middleTop {
   vertical-align: center;
@@ -313,7 +300,6 @@ body {
 
 .button {
   background-color: #333533;
-  /* Green */
   border: none;
   color: #EEF1E7;
   text-align: center;
@@ -322,6 +308,9 @@ body {
   padding: 0;
   height: 100%;
   width: 100%; }
+  .button:hover {
+    background-color: #EEF1E7;
+    color: #333533; }
 
 .graphToggle {
   vertical-align: center;
@@ -338,23 +327,10 @@ body {
   margin: auto;
   height: 70%;
   padding: 0;
-  /*margin-left: .5em;*/
   margin-right: .5em; }
 
-.button:hover {
-  background-color: #EEF1E7;
-  color: #333533; }
-
-/*.col-sm-3{
-
-	border: dashed white;
-	height: 100%;
-	padding:0;
-
-}*/
 .middle {
-  /*	border: dashed blue;*/
-  background-color: beige;
+  background-color: red;
   height: 85%; }
 
 .insights {
@@ -370,16 +346,9 @@ body {
   padding: 0;
   padding-left: .5rem;
   overflow: auto; }
+  .list li {
+    font-size: 2rem; }
 
-.list li {
-  font-size: 2rem;
-  /*border-bottom: black solid;
-  border-bottom-width: .01rem;
-  */ }
-
-/*.list li:nth-child(odd){
-	background-color: #E0F1F0;
-}*/
 .newsLi {
   list-style: none;
   width: 95%; }
@@ -394,16 +363,14 @@ body {
   padding: 0;
   height: 100%;
   width: 70%; }
+  .graphTitle h1 {
+    margin-left: 1em; }
 
-.graphTitle h1 {
-  margin-left: 1em; }
 
 .c3-axis-y text {
-  /*fill: red;*/
   font-size: 1.7rem; }
 
 .c3-axis-y2 text {
-  /*fill: red;*/
   font-size: 1.7rem; }
 
 .c3-axis-x text {
