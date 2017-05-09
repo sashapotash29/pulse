@@ -6,6 +6,7 @@ var coke_info;
 var snap_info;
 console.log("OUTER MOST STATIC FOLDER")
 var data;
+console.log('starting')
 var bulk_info = $.ajax(
 		{
 			url: '/graph',
@@ -14,8 +15,8 @@ var bulk_info = $.ajax(
 			method: 'GET',
 			success: function(result){
 				data = JSON.parse(result);
-				// console.log('data')
-				// console.log(data)
+				console.log('data')
+				console.log(data)
 				$('.loader').css('display','none')
 				tesla_info = data['result']['tesla']
 				coke_info = data['result']['coke']
@@ -24,7 +25,7 @@ var bulk_info = $.ajax(
 			}
 		}
 )
-
+// http://www.checkthepulse.today
 
 
 

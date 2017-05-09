@@ -16,6 +16,7 @@ var bulk_info = $.ajax(
 				console.log('success?')
 				// console.log(data)
 				$('.loader').css('display','none')
+				$('#loadingMessage').toggleClass('showing')
 				tesla_info = data['result']['tesla']
 				coke_info = data['result']['coke']
 				snap_info = data['result']['snap']
@@ -293,6 +294,7 @@ var check = function(){
 	}
 }
 
+// http://www.checkthepulse.today
 var side_bar=function(e){
 	
 	var company = $('.active')[0].id
