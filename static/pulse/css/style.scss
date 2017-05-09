@@ -1,6 +1,7 @@
 body{
 	background-color: white;
 	height:100vh;
+
 }
 .rowDiv{
 	height:100vh;
@@ -85,25 +86,6 @@ body{
 
 }
 
-/*#loadingMessage{
-	display:none;
-
-}*/
-.hides{
-	display:none;
-	opacity:0;
-}
-
-.showing{
-	/*width: 300px;*/
-  	/*height: 300px;*/
-  	/*margin: 30px auto;*/
-	display: block;
-	opacity:1;
-	transition: opacity 4s;
-}
-
-
 /*BAR AND LINE*/
 
 .superGraph{
@@ -133,7 +115,7 @@ body{
 }
 
 .top{
-/*	background-color: beige;*/
+	background-color: red;
 	text-align: center;
 	height: 10%;
 	width:100;
@@ -265,7 +247,7 @@ body{
  	margin:0;
 	padding:0;
 	font-size: 2em;
-	/*border: dashed black;*/
+	border: dashed black;
 	color:lightblue;
 	background-color: darkblue;
 
@@ -537,11 +519,10 @@ body{
 	height:90%;
 	margin:0;
 	margin-left: .5rem;
-	margin-bottom: .5rem
+	margin-bottom: .5rem;
 	padding:0;
 	padding-left: .5rem;
-	overflow-y:auto;
-	overflow-x: hidden;
+	overflow:auto;
 
 	
 }
@@ -565,8 +546,7 @@ body{
 	width:95%;
 	
 }
-/*============================================*/
-/*=================Graph styles overrides*/
+
 .graphTitle{
 	background: white;
 	margin: 0;
@@ -581,39 +561,18 @@ body{
 
 .c3-axis-y text {
    /*fill: red;*/
-   font-size:1.8rem;
+   font-size:1.7rem;
 }
-
-.c3-axis-y-label{
-	/*margin-right: 10px;	*/
-	position:justify-left;
-}
-
-.c3-axis-y2-label{
-	margin-left: 10px;
-}
-
-.c3-axis-y text {
-   fill: #1D698A;
-   font-size:1.5rem;
-}
-
 .c3-axis-y2 text {
-   fill: #C4580F;
-   font-size:1.5rem;
+   /*fill: red;*/
+   font-size:1.7rem;
 }
 .c3-axis-x text {
     font-size:1.8rem;
-    /*fill:purple;*/
+    fill:purple;
 }
-.tick{
-	margin:3em;
-}
+
 .footer{
 	color:white;
 	text-align: center;
-}
-
-.c3-axis-x g:nth-child(odd){
-	display:none;
 }
