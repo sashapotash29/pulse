@@ -4,9 +4,8 @@
 var tesla_info; 
 var coke_info;
 var snap_info;
-console.log("OUTER MOST STATIC FOLDER")
+console.log("PULSE STATIC FILE")
 var data;
-console.log('starting')
 var bulk_info = $.ajax(
 		{
 			url: '/graph',
@@ -15,9 +14,10 @@ var bulk_info = $.ajax(
 			method: 'GET',
 			success: function(result){
 				data = JSON.parse(result);
-				console.log('data')
-				console.log(data)
+				console.log('success?')
+				// console.log(data)
 				$('.loader').css('display','none')
+				$('#loadingMessage').toggleClass('showing')
 				tesla_info = data['result']['tesla']
 				coke_info = data['result']['coke']
 				snap_info = data['result']['snap']
@@ -25,7 +25,7 @@ var bulk_info = $.ajax(
 			}
 		}
 )
-// http://www.checkthepulse.today
+
 
 
 
@@ -294,7 +294,7 @@ var check = function(){
 		return snap_info
 	}
 }
-
+// http://www.checkthepulse.today
 var side_bar=function(e){
 	
 	var company = $('.active')[0].id
@@ -306,7 +306,7 @@ var side_bar=function(e){
 	$('.tweetsLoader').css('display','block')
 	$.ajax(
 		{
-			url:'/media',
+			url: '/media',
 			// url: 'http://127.0.0.1:8000/media',
 			// url: 'http://www.checkthepulse.today/media',
 			data: {'company':company, 'date':date},
@@ -363,6 +363,7 @@ var side_bar=function(e){
 					var tweets_li = $('<li></li>')
 					tweets_li.text('Sorry No Tweets Available For This Day')
 					tweets_li.addClass('tweetsLi')
+
 					// TARGET THE CONTENT NOT EVERYTHING?
 					
 					// tweets_li.append(linkTag)
@@ -390,6 +391,12 @@ var side_bar=function(e){
 					}
 				}
 				// SECOND 'FOR LOOP' FOR TWEETS ENDS
+				var peep_ul = $('.PeoplesInfo');
+				peep_ul.empty();
+				var peep_tweets_li = $('<li></li>')
+				peep_tweets_li.text('Sorry No Tweets Available For This Day');
+				peep_ul.addClass('peepTweetsLi');
+				peep_ul.append(peep_tweets_li);
 			}
 
 		}
