@@ -523,6 +523,7 @@ body{
 	padding:0;
 	padding-left: .5rem;
 	overflow-y:auto;
+	overflow-x: hidden;
 
 	
 }
@@ -593,4 +594,8 @@ body{
 .footer{
 	color:white;
 	text-align: center;
+}
+
+.c3-axis-x g:nth-child(odd){
+	display:none;
 }
