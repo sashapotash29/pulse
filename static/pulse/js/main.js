@@ -29,13 +29,13 @@ var bulk_info = $.ajax(
 
 
 
-var unpack_for_line = function(ticker,stock_info){
-	var price_list = stock_info
+// var unpack_for_line = function(ticker,stock_info){
+// 	var price_list = stock_info
 
 	
 
 	
-}
+// }
 
 
 
@@ -85,7 +85,7 @@ var make_bar_graph = function(stock_info){
     			y:{
     				label: {
     					text: "Price (in $USD)",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
     				}
     			},
 
@@ -93,7 +93,7 @@ var make_bar_graph = function(stock_info){
     				show: true,
     				label: {
     					text: "Activity",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
 
     				}
 
@@ -121,7 +121,7 @@ var make_line_graph = function(stock_info){
 	// console.log(stock_info)
 	var ticker = stock_info[0]['company']
 	var price_list = [ticker].concat(stock_data['price_list'])
-	// console.log(price_list)
+	console.log(price_list)
 	var count_list = ['Activity'].concat(stock_info[1])
 	var orig_date_list = stock_info[2]
 	var date_list = ['x'].concat(stock_info[2])
@@ -129,6 +129,7 @@ var make_line_graph = function(stock_info){
 
 	require(["d3", "c3"], function(d3, c3){
 		var chart = c3.generate({
+			
 			bindto:'.graphArea',
     		data: {
         		x: 'x',
@@ -145,7 +146,7 @@ var make_line_graph = function(stock_info){
     			y:{
     				label: {
     					text: "Price (in $USD)",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
     				}
     			},
 
@@ -153,7 +154,7 @@ var make_line_graph = function(stock_info){
     				show: true,
     				label: {
     					text: "Activity",
-    					position: 'inner-middle'
+    					position: 'outer-middle'
 
     				}
 
