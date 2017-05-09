@@ -4,7 +4,7 @@
 var tesla_info; 
 var coke_info;
 var snap_info;
-console.log("PULSE STATIC FILE")
+console.log("PROJECT STATIC")
 var data;
 var bulk_info = $.ajax(
 		{
