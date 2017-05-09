@@ -375,10 +375,15 @@ body {
 
 .c3-axis-x text {
   font-size: 1.8rem;
-  fill: purple; }
+  /*fill: purple; */
+}
 
 .footer {
   color: white;
   text-align: center; }
+
+ .c3-axis-x g:nth-child(odd){
+ 	display:none;
+ } 
 
 /*# sourceMappingURL=style.css.map */
