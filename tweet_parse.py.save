@@ -63,8 +63,12 @@ def tweet_parse():
 					now = datetime.utcnow()+timedelta(hours=1)
 					# now=datetime.strptime(now, '%d %b %Y %H:%M:%S %z')
 					compare = now-timedelta(minutes=10)
-					# print('now')
-					# print(now)
+					# print('now')					# print(now)
+<<<<<<< HEAD
+					# print ('compare')
+					# print (compare)
+=======
+>>>>>>> 7d5d6a092921ff920561445e28d03676df67bc55
 				
 					if date_time_object>=compare:
 						print('time check good')
@@ -146,7 +150,5 @@ def tweet_parse():
 			print('no tweets to add')
 		finish_time = datetime.now()
 		run_time = (finish_time-start_time).seconds
-
 		# print(run_time)
 		time.sleep(600-run_time)	
-
