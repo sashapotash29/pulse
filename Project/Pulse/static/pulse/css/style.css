@@ -71,18 +71,18 @@ body {
 
 }*/
 .hides{
-	display:none;
+	/*display:none;*/
 	opacity:0;
+	/*transition: all 4s;*/
+}
+.showing{
+	font-size: 30px;
+	font-style: bold;
+	display:block;
+	opacity:1;
+	transition: all 3s;
 }
 
-.showing{
-	/*width: 300px;*/
-  	/*height: 300px;*/
-  	/*margin: 30px auto;*/
-	display: block;
-	opacity:1;
-	transition: all 4s;
-}
 
 
 /*BAR AND LINE*/
