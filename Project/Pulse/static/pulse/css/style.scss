@@ -1,0 +1,424 @@
+$lightGrey: #f3f3f3;
+$blueLoad: #3498db;
+$darkGreenGrey: #333533;
+$lightGreenGrey: #EEF1E7;
+
+body{
+	background-color: white;
+	height:100vh;
+}
+.rowDiv{
+	height:100vh;
+}
+
+.topSpace{
+	background-color: $darkGreenGrey;
+}
+
+/*LOADER*/
+
+.space{
+	background:#F5F3F0;
+}
+
+.loader {
+    border: 16px solid $lightGrey;
+    border-top: 16px solid $blueLoad;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*NEWS LOADER*/
+
+.newsLoader {
+    border: 16px solid $lightGrey;
+    border-top: 16px solid $blueLoad;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    animation: spin 2s linear infinite;
+    display:none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*TWEETS LOADER*/
+
+.tweetsLoader {
+    border: 16px solid $lightGrey;
+    border-top: 16px solid $blueLoad;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    animation: spin 2s linear infinite;
+    display:none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.graphArea{
+	border:black;
+	height: 90%;
+	width:100%;
+	position: relative;
+	margin:auto;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/*BAR AND LINE*/
+
+.superGraph{
+	position:absolute;
+	border: dashed pink;
+	height: 100%;
+	width: 100%;
+	padding:0;
+	margin:0;
+	display: block;
+}
+
+.barGraph{
+	display:none;
+}
+
+.top{
+	text-align: center;
+	height: 10%;
+	width:100;
+	margin:0;
+}
+
+.bottom{
+	height: 5%;
+	background-color: $darkGreenGrey;
+	margin:0;
+	color:white;
+	text-align: center;
+}
+
+.void{
+	width:100%;
+}
+
+.logoDiv{
+	height:100%;
+	margin:0;
+	padding:0;
+	vertical-align: center;
+	text-align: left;
+	width:100%;
+	color:white;
+}
+
+.nav{
+	height: 100%;
+	margin: 0;
+	padding:0;
+}
+
+.ddg{
+	background-color: white;
+	height:100%;
+	margin:0;
+	padding:0;
+	width:20em;
+	vertical-align: bottom
+}
+
+.graphType{
+	height:100%;
+	background-color: black;
+}
+
+.graphNavItem{
+	height:100%;
+	width: 100%;
+ 	margin:0;
+	padding:0;
+	font-size: 2em;
+	border: none;
+	background-color: black;
+	&:hover{
+		height:100%;
+		width: 100%;
+	 	margin:0;
+		padding:0;
+		font-size: 2em;
+		color:black;
+		background-color: white;	
+	}
+}
+
+.graphButton{
+	height:100%;
+	width: 100%;
+ 	margin:0;
+	padding:0;
+	font-size: 2em;
+	border-radius: 10px;
+	background-color: white;
+	color:darkblue;
+	&:hover{
+		height:100%;
+		width: 100%;
+	 	margin:0;
+		padding:0;
+		font-size: 2em;
+		border: dashed black;
+		color:lightblue;
+		background-color: darkblue;
+	}
+}
+
+#graphWord{
+  background-color: $darkGreenGrey; /* Green */
+  border: none;
+  color: $lightGreenGrey;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  align-items: center;
+  padding:0;
+  margin:0;
+  height:100%;
+  width:100%;
+	&:hover{
+		background-color: $lightGreenGrey; /* Green */
+    color: $darkGreenGrey;
+	}
+}
+
+.graphOption{
+	width:100%;
+	height:100%;
+	background-color: $darkGreenGrey;
+	color:white;
+	border: $darkGreenGrey;
+}
+.dropdownList{
+	list-style: none;
+	padding:0;
+	margin:0;
+	background-color: $darkGreenGrey;
+	/*height:100%;*/
+}
+
+.ulButton{
+	padding:1em;
+	margin:0;
+	/*height:100%;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.liButton{
+	width:100%;
+	list-style: none;
+	font-size: 2em;
+	margin-top: .2em;
+	margin-bottom: .2em;
+	height: 50%;
+	padding:0;
+	/*background-color:black;*/
+	color:white;
+	/*border: black;*/
+}
+
+
+#mainTitle{
+	font-size: 6em;
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+	background-color: $darkGreenGrey;
+	color: white;
+	padding-left: .5em;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+/*MIDDLE PORTION*/
+
+.right{
+	height:100%;
+	background-color: white;
+	padding: 0;
+	margin:0;
+	border-left-width: .01em;
+	border-left: lightblue solid;
+}
+
+.center{
+	border: black;
+	height:100%;
+	background-color: white;	
+}
+
+.sideHeader{
+	text-align: center;
+	text-decoration: underline;
+}
+
+/*BOTTOM*/
+
+.bttn{
+	width: 100%;
+	font-size: 2rem;
+	text-align: center;
+	margin:0;
+	padding: 0;
+	height:100%;
+}
+
+#tsla{
+	background-color: blue;
+	color: white;
+	&:hover{
+		background-color: white;
+		color: blue; 
+	} 
+}
+
+#ko{
+	background-color: #f80000;
+	color: white; 
+	&:hover{
+		background-color: white;
+		color: #f80000; 	
+	}
+}
+
+#snap{
+	background-color: yellow;
+	color: black; 
+	&:hover{
+		background-color: black;
+		color: yellow; 
+	}
+}
+
+.socialDetail{
+	list-style: none;
+}
+
+.middleTop{
+	vertical-align: center;
+	display:none;
+	height: 10%;
+}
+
+.button {
+  background-color: $darkGreenGrey;
+  border: none;
+  color: $lightGreenGrey;
+  text-align: center;
+  display: inline-block;
+  font-size: 5em;
+  padding:0;
+  height:100%;
+  width:100%;
+ 	&:hover{
+ 		background-color:$lightGreenGrey;
+		color: $darkGreenGrey;
+ 	} 
+}
+
+.graphToggle{
+	vertical-align: center;
+	margin-top: .5em;
+	height:90%;
+	width:10em;
+}
+
+.innerNavDiv{
+	background-color: white;
+	border-color: $darkGreenGrey;
+	border-style: outset;
+	border-radius: 10px;
+	text-align: center;
+	margin:auto;
+	height:70%;
+	padding:0;
+	margin-right: .5em;
+}
+
+.middle{
+	background-color: red;
+	height: 85%;
+}
+
+.insights{
+	display:block;
+	width:100%;
+	height:30%;
+}
+
+.list{
+	height:90%;
+	margin:0;
+	margin-left: .5rem;
+	margin-bottom: .5rem;
+	padding:0;
+	padding-left: .5rem;
+	overflow:auto;
+	li{
+		font-size: 2rem;	
+	}	
+}
+
+.newsLi{
+	list-style: none;
+	width:95%;
+}	
+
+.tweetsLi{
+	list-style: none;
+	width:95%;	
+}
+
+.graphTitle{
+	background: white;
+	margin: 0;
+	padding:0;
+	height:100%;
+	width:70%;
+	h1{
+		margin-left: 1em;
+	}
+}
+
+.c3-axis-y text {
+   font-size:1.7rem;
+}
+.c3-axis-y2 text {
+   font-size:1.7rem;
+}
+.c3-axis-x text {
+    font-size:1.8rem;
+    fill:purple;
+}
+
+.footer{
+	color:white;
+	text-align: center;
+}
